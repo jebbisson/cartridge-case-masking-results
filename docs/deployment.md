@@ -32,13 +32,21 @@ Check that Docker is running and that port 8787 is not already occupied if the a
 
 A Docker-managed named volume mounted at `/data` holds workspace files, including SQLite and its sidecars and the run directories with snapshots and checkpoints. Do not put the SQLite workspace on a Windows host bind mount. Use `docker compose down` to stop; the named volume survives ordinary shutdown and container rebuilds. **`docker compose down -v` deletes the workspace volume.**
 
-An image upgrade does not replace an existing workspace, its cases, or its trained models. To load the new starter on the same port without deleting the original volume, use the [README reload command](../README.md#reload-docker-with-the-new-starter-data). The first launch with a new volume name copies the current starter into it; subsequent launches with that name preserve its edits. Use a name that does not already exist if you need to load a newer seed from scratch.
+An image upgrade does not replace an existing workspace, its cases, or its trained models. To discard a workspace and restore the bundled starter data, follow the [data reset instructions](../README.md#data-reset). `/data` is the mount point inside the container; manage its volume with Docker rather than deleting a host folder or files from a running container.
 
-In PowerShell, set the volume name before starting:
+### Start fresh without deleting existing data
+
+Set `REVIEWAPP_WORKSPACE_VOLUME` to an unused volume name before launching. The first launch with that name seeds a new workspace. Later launches with the same name reuse it and preserve its edits. For example, in a POSIX shell:
+
+```sh
+REVIEWAPP_WORKSPACE_VOLUME=workbench-clean docker compose up --build --wait
+```
+
+In PowerShell:
 
 ```powershell
-$env:REVIEWAPP_WORKSPACE_VOLUME = 'cartridge-case-workbench-run3'
-docker compose up --build --force-recreate --wait
+$env:REVIEWAPP_WORKSPACE_VOLUME = 'workbench-clean'
+docker compose up --build --wait
 ```
 
 To switch back to the original workspace, omit `REVIEWAPP_WORKSPACE_VOLUME` and run `docker compose up -d`. If the variable is set for your shell, clear it first (`unset REVIEWAPP_WORKSPACE_VOLUME` in a POSIX shell, or `Remove-Item Env:REVIEWAPP_WORKSPACE_VOLUME` in PowerShell). Switching volumes does not merge case histories; neither volume is deleted.

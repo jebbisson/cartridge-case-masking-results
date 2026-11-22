@@ -18,21 +18,23 @@ Open [localhost:8787](http://localhost:8787/). A fresh workspace has 30 approved
 
 Stop with `docker compose down`. The named volume mounted at `/data` keeps your work; do not add `-v` unless you intend to delete it.
 
-### Reload Docker with the new starter data
+### Data reset
 
-From the repository root, rebuild and recreate the same workbench on a fresh volume. A plain restart or rebuild keeps the old data.
+**A data reset permanently deletes the selected workspace volume**, including imported cases, saved edits, revision history, and training runs. Back up anything you want to keep. A normal restart or rebuild is not a reset.
 
-```sh
-REVIEWAPP_WORKSPACE_VOLUME=cartridge-case-workbench-run3 docker compose up --build --force-recreate --wait
-```
-
-On Linux if Docker requires `sudo`, run:
+From the repository root, using the same Compose project and volume settings you use to start the app, stop the app and remove its volume:
 
 ```sh
-sudo env REVIEWAPP_WORKSPACE_VOLUME=cartridge-case-workbench-run3 docker compose up --build --force-recreate --wait
+docker compose down --volumes
 ```
 
-Open or refresh [localhost:8787](http://localhost:8787/) to see the 30 cases. The previous volume and any edits stay intact; repeat the reload command to keep using the new workspace. See [Workspace and backups](docs/deployment.md#workspace-and-backups) for PowerShell and how to switch back.
+Once that succeeds, rebuild and start the app:
+
+```sh
+docker compose up --build --wait
+```
+
+Prefix both commands with `sudo` if your Linux Docker setup requires it. On startup, the app creates a fresh workspace from the bundled starter data. Open [localhost:8787](http://localhost:8787/). See [Workspace and backups](docs/deployment.md#workspace-and-backups) for how to keep the existing volume instead.
 
 ## Screenshot slots
 

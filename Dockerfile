@@ -34,9 +34,14 @@ COPY deployment/bootstrap.py /app/deployment/bootstrap.py
 # files from the dedicated build context, never the dataset or a working DB.
 COPY deployment/starter.full.sha256 /app/deployment/starter.sha256
 COPY training/ATTRIBUTION.md /opt/starter/ATTRIBUTION.md
-COPY --from=starter_bundle --chmod=0444 /SHA256SUMS /opt/starter/bundle/SHA256SUMS
-COPY --from=starter_bundle --chmod=0444 /review.sqlite /opt/starter/bundle/review.sqlite
-COPY --from=starter_bundle --chmod=0444 /review.sqlite.runs/1/checkpoint.json /opt/starter/bundle/review.sqlite.runs/1/checkpoint.json
+COPY --from=starter_bundle /SHA256SUMS /opt/starter/bundle/SHA256SUMS
+COPY --from=starter_bundle /review.sqlite /opt/starter/bundle/review.sqlite
+COPY --from=starter_bundle /review.sqlite.runs/1/checkpoint.json /opt/starter/bundle/review.sqlite.runs/1/checkpoint.json
+# Set file and directory modes separately: COPY --chmod can also affect parent directories.
+RUN chmod 0755 /opt/starter /opt/starter/bundle \
+        /opt/starter/bundle/review.sqlite.runs /opt/starter/bundle/review.sqlite.runs/1 \
+    && chmod 0444 /opt/starter/bundle/SHA256SUMS /opt/starter/bundle/review.sqlite \
+        /opt/starter/bundle/review.sqlite.runs/1/checkpoint.json
 USER 10001:10001
 RUN cd /opt/starter/bundle && cmp SHA256SUMS /app/deployment/starter.sha256 && sha256sum -c /app/deployment/starter.sha256
 

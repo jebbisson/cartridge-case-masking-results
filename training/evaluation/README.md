@@ -9,11 +9,11 @@ From the repository root, use the workbench's pinned Python 3.14 environment wit
 ```sh
 mkdir -p .local/evaluation
 python -B training/evaluation/grouped_cv.py \
-  --manifest training/dataset/manifest.jsonl --folds 3 --seed 413 \
+  --manifest training/dataset/train.jsonl --folds 3 --seed 413 \
   > .local/evaluation/grouped-cv.json
 ```
 
-The manifest, fold count, and seed above are the defaults. Use `--manifest` to supply another approved train-only export. The runner prints progress to stderr and emits one aggregate JSON report to stdout on success. It keeps fold manifests, staged fitting assets, freshly trained checkpoints, and predictions in temporary directories that it removes on exit. It does not write back to the dataset or emit per-case scores or fold assignments. Keep saved reports local unless cleared for sharing.
+The train-only manifest, fold count, and seed above are the defaults. The full `training/dataset/manifest.jsonl` is an inventory of all 48 cases and is deliberately rejected as mixed input; do not use it for fitting or grouped development evaluation. Use `--manifest` to supply another approved train-only export. The runner prints progress to stderr and emits one aggregate JSON report to stdout on success. It keeps fold manifests, staged fitting assets, freshly trained checkpoints, and predictions in temporary directories that it removes on exit. It does not write back to the dataset or emit per-case scores or fold assignments. Keep saved reports local unless cleared for sharing.
 
 For asset-free bookkeeping and metric tests:
 

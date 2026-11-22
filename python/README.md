@@ -2,7 +2,7 @@
 
 [Back to the workbench README](../README.md#documentation)
 
-[`python/multiscale_worker.py`](multiscale_worker.py) is the entry point for local CPU training and prediction. [`multiscale_training.py`](multiscale_training.py) handles snapshot sampling and fitting; [`multiscale_inference_v1.py`](multiscale_inference_v1.py) defines the versioned features and cleanup. See the [Python worker diagram](../docs/architecture.md#python-worker-flow). The first-run target is the same fitted, mask-only Run #3 baseline, subject to [starter clearance](../starter/README.md); fitting another model produces a new run, not Run #3.
+[`python/multiscale_worker.py`](multiscale_worker.py) is the entry point for local CPU training and prediction. [`multiscale_training.py`](multiscale_training.py) handles snapshot sampling and fitting; [`multiscale_inference_v1.py`](multiscale_inference_v1.py) defines the versioned features and cleanup. See the [Python worker diagram](../docs/architecture.md#python-worker-flow). The first-run target is the same fitted, mask-only Run #3 baseline, with [separate asset terms](../docs/data-licenses.md); fitting another model produces a new run, not Run #3.
 
 ## What the worker does
 

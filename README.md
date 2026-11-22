@@ -2,7 +2,7 @@
 
 A local browser workbench for reviewing pixel masks on fired cartridge-case microscopy PNGs. Compare an estimate with the original scan, correct masks at native resolution, and save revisions without changing the original. The CPU estimator uses the Run #3 mask-only baseline. Drag-direction arrows can be edited by hand; the estimator does not create or change them.
 
-**Release status:** Local working-tree review only. The starter bundle is not cleared for redistribution. This is a review aid, not a validated forensic tool or a published benchmark.
+**Release status:** Research/development release with 48 real scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
 
 ## Methodology
 
@@ -30,7 +30,7 @@ With the verified starter bundle at `starter/full-bundle/`, run this from the re
 docker compose up --build -d
 ```
 
-Open [localhost:8787](http://localhost:8787/). A fresh workspace has 30 approved cases and the fitted Run #3 model, so **Run new estimate** works without retraining. The estimate is an unsaved preview until you save or approve it. An existing workspace is preserved on upgrade.
+Open [localhost:8787](http://localhost:8787/). A fresh workspace has all 48 real cohort scans (30 train, 6 validation, 12 test), with only the 30 training cases approved and included, and the unchanged fitted Run #3 model, so **Run new estimate** works without retraining. The estimate is an unsaved preview until you save or approve it. An existing workspace is preserved on upgrade.
 
 Stop with `docker compose down`. The named volume mounted at `/data` keeps your work; do not add `-v` unless you intend to delete it.
 
@@ -70,6 +70,6 @@ Side-by-side original scans and generated masks are intentionally deferred while
 
 ## License and data credits
 
-The original workbench software is licensed under [MIT](LICENSE). Third-party dependencies keep their own licenses. MIT does not cover the starter scans, annotations, or fitted checkpoint.
+The original workbench software is licensed under [MIT](LICENSE). Third-party dependencies keep their own licenses. The scan images follow NIST's published reuse terms; local annotation contributions and the fitted checkpoint are distributed under CC BY 4.0 with Dundee source credit. MIT does not replace these asset-specific terms. See [Data, annotation, and model terms](docs/data-licenses.md) for permissions, required notices, and the release-review limits.
 
 The training annotations combine locally reviewed GPT-assisted drafts with retained or edited University of Dundee masks. Dundee's masks are credited under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), including where we resized or edited them. See the [starter data guide](starter/README.md#dundee-mask-attribution) for the full citation, changes, and separate terms for the other assets.

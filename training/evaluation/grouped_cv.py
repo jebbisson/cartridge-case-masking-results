@@ -254,8 +254,8 @@ def evaluate(manifest, count, seed):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--manifest', type=Path, default=ROOT / 'training/dataset/manifest.jsonl',
-                        help='approved train-only JSONL (default: training/dataset/manifest.jsonl)')
+    parser.add_argument('--manifest', type=Path, default=ROOT / 'training/dataset/train.jsonl',
+                        help='approved train-only JSONL (default: training/dataset/train.jsonl)')
     parser.add_argument('--folds', type=int, default=3, help='number of development folds (default: 3)')
     parser.add_argument('--seed', type=int, default=413, help='group tie-break seed (default: 413)')
     args = parser.parse_args()

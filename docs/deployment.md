@@ -11,7 +11,7 @@ Use Docker Compose 2.17 or later with a local builder that supports named build 
 
 ## Start and stop
 
-Put the verified starter bundle at `starter/full-bundle/`. Its database, fitted checkpoint, and `SHA256SUMS` are checked against the repository's independent pins at build time. The image includes those files and their attribution; it does not include the separate training export. The current bundle and image are for local use only while redistribution rights are reviewed. Run from the repository root:
+Put the verified starter bundle at `starter/full-bundle/`. Its three database transport parts (at most 64 MiB each), fitted checkpoint, `PARTS.sha256`, and full-file `SHA256SUMS` are checked against the repository's independent pins at build time. The image includes those files and their attribution; it does not include the separate training export. The current bundle and image are for local use only while redistribution rights are reviewed. Run from the repository root:
 
 ```sh
 docker compose up --build -d
@@ -19,7 +19,7 @@ docker compose up --build -d
 
 Open [http://localhost:8787/](http://localhost:8787/) (or `http://127.0.0.1:8787/`). The port is intended to be published on host loopback only. This single-user app has no login; do not expose it to a LAN or the internet. The [system diagram](architecture.md#system-overview) shows the storage and process boundaries.
 
-A fresh volume is seeded once with 30 approved cases and the fitted Run #3 mask model, displayed as Run #1 in a fresh workspace. Open a case and select **Run new estimate**; no host data mount or retraining is needed. If a build or startup fails, check the logs and verify the bundle. Do not substitute a research database or refit a checkpoint and call it Run #3.
+A fresh volume is seeded once with all 48 real cohort scans (30 train / 6 validation / 12 test), exactly 30 approved and included training cases, and the unchanged fitted Run #3 mask model, displayed as Run #1 in a fresh workspace. Open a case and select **Run new estimate**; no host data mount or retraining is needed. If a build or startup fails, check the logs and verify the bundle. Do not substitute a research database or refit a checkpoint and call it Run #3.
 
 ```sh
 docker compose ps

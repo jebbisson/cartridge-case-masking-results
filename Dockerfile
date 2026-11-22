@@ -27,16 +27,25 @@ RUN pip install --no-cache-dir --only-binary=:all: -r python/requirements.txt \
 COPY --from=go-build /out/reviewapp /usr/local/bin/reviewapp
 COPY --from=web-build /src/web/dist /app/web/dist
 COPY LICENSE /app/LICENSE
+COPY docs/data-licenses.md /opt/starter/DATA-LICENSES.md
 COPY python/*.py /app/python/
 COPY deployment/bootstrap.py /app/deployment/bootstrap.py
+COPY deployment/assemble_seed.py /app/deployment/assemble_seed.py
+COPY deployment/starter.parts.sha256 /app/deployment/starter.parts.sha256
 
 # The release image has one starter. Copy only fixed, independently pinned
 # files from the dedicated build context, never the dataset or a working DB.
 COPY deployment/starter.full.sha256 /app/deployment/starter.sha256
 COPY training/ATTRIBUTION.md /opt/starter/ATTRIBUTION.md
-COPY --from=starter_bundle /SHA256SUMS /opt/starter/bundle/SHA256SUMS
-COPY --from=starter_bundle /review.sqlite /opt/starter/bundle/review.sqlite
-COPY --from=starter_bundle /review.sqlite.runs/1/checkpoint.json /opt/starter/bundle/review.sqlite.runs/1/checkpoint.json
+COPY --from=starter_bundle /SHA256SUMS /opt/starter/parts/SHA256SUMS
+COPY --from=starter_bundle /PARTS.sha256 /opt/starter/parts/PARTS.sha256
+COPY --from=starter_bundle /review.sqlite.part-* /opt/starter/parts/
+COPY --from=starter_bundle /review.sqlite.runs/1/checkpoint.json /opt/starter/parts/review.sqlite.runs/1/checkpoint.json
+# Assemble as build-time root; the runtime UID still checks the full seed below.
+RUN python /app/deployment/assemble_seed.py --bundle /opt/starter/parts \
+      --output /opt/starter/bundle --pins /app/deployment/starter.sha256 \
+      --parts-pins /app/deployment/starter.parts.sha256 \
+    && rm -r /opt/starter/parts
 # Set file and directory modes separately: COPY --chmod can also affect parent directories.
 RUN chmod 0755 /opt/starter /opt/starter/bundle \
         /opt/starter/bundle/review.sqlite.runs /opt/starter/bundle/review.sqlite.runs/1 \

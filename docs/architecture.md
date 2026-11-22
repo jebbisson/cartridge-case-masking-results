@@ -73,4 +73,4 @@ flowchart TD
     Estimate --> Review["Compare with the original; save only if intended"]
 ```
 
-The starter is neither a copy of an existing workspace nor a held-out evaluation set. See [Starter cases and credits](../starter/README.md).
+The starter is a sanitized full 48-case inventory, not a copy of a private workspace. Only the frozen 30 train cases are approved and included; 6 validation and 12 test cases have unapproved source revisions and are not an independently blind evaluation set. See [Starter cases and credits](../starter/README.md).

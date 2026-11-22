@@ -41,7 +41,47 @@ def copy_checked(source, destination, expected):
         raise ValueError(f'starter checksum does not match: {source.name}')
 
 
-def install_seed(bundle, workspace, *, trusted_manifest=None, empty_start=False):
+def database_parts(bundle, trusted_parts=None):
+    """Validate canonical, independently pinned transport parts (64 MiB max)."""
+    raw = (bundle / 'PARTS.sha256').read_bytes()
+    if trusted_parts is not None and raw != trusted_parts.read_bytes():
+        raise ValueError('starter parts do not match trusted deployment pins')
+    parts = []
+    for index, line in enumerate(raw.decode('ascii').splitlines()):
+        match = re.fullmatch(r'([0-9a-f]{64})  (review\.sqlite\.part-[0-9]{3})', line)
+        if match is None or match[2] != f'review.sqlite.part-{index:03}' or index >= 100:
+            raise ValueError('invalid starter part order or name')
+        path = bundle / match[2]
+        if path.is_symlink() or not 0 < path.stat().st_size <= 64 * 1024 * 1024:
+            raise ValueError('invalid starter part size or symlink')
+        parts.append((path, match[1]))
+    if not parts:
+        raise ValueError('empty starter parts catalogue')
+    return parts
+
+
+def copy_database(bundle, destination, expected, trusted_parts=None):
+    if not (bundle / 'PARTS.sha256').exists():
+        return copy_checked(bundle / DATABASE, destination, expected)
+    parts = database_parts(bundle, trusted_parts)
+    digest = hashlib.sha256()
+    with destination.open('xb') as writer:
+        for source, pin in parts:
+            part = hashlib.sha256()
+            with source.open('rb') as reader:
+                while chunk := reader.read(CHUNK):
+                    digest.update(chunk)
+                    part.update(chunk)
+                    writer.write(chunk)
+            if part.hexdigest() != pin:
+                raise ValueError(f'starter part checksum does not match: {source.name}')
+        writer.flush()
+        os.fsync(writer.fileno())
+    if digest.hexdigest() != expected:
+        raise ValueError('assembled starter database checksum does not match')
+
+
+def install_seed(bundle, workspace, *, trusted_manifest=None, trusted_parts=None, empty_start=False):
     """Publish the checkpoint first, and the database as the completion marker."""
     workspace.mkdir(parents=True, exist_ok=True)
     with (workspace / '.starter-init.lock').open('ab') as lock:
@@ -56,7 +96,10 @@ def install_seed(bundle, workspace, *, trusted_manifest=None, empty_start=False)
         with TemporaryDirectory(prefix='.starter-', dir=workspace) as temp:
             stage = Path(temp)
             for relative in SEED_FILES:
-                copy_checked(bundle / relative, stage / relative.name, checksums[relative])
+                if relative == DATABASE:
+                    copy_database(bundle, stage / relative.name, checksums[relative], trusted_parts)
+                else:
+                    copy_checked(bundle / relative, stage / relative.name, checksums[relative])
             checkpoint = workspace / CHECKPOINT
             checkpoint.parent.mkdir(parents=True, exist_ok=True)
             try:
@@ -79,6 +122,7 @@ def main():
             Path(os.environ.get('REVIEWAPP_STARTER_DIR', 'starter/bundle')),
             Path(os.environ.get('REVIEWAPP_DATA_DIR', '.local')),
             trusted_manifest=Path(__file__).with_name('starter.sha256'),
+            trusted_parts=Path(__file__).with_name('starter.parts.sha256'),
             empty_start=os.environ.get('REVIEWAPP_EMPTY_START') == '1',
         )
     except (OSError, ValueError) as exc:

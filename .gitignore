@@ -1,0 +1,11 @@
+# Local review assets are not licensed for release merely by being present.
+/starter/bundle/
+/.local/
+/.env
+__pycache__/
+*.py[cod]
+.venv/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite.runs/

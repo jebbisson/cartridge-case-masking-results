@@ -1,0 +1,7 @@
+{
+  "breech_face": [235, 65, 67],
+  "aperture_shear": [65, 184, 88],
+  "firing_pin_shear": [171, 101, 217],
+  "firing_pin_impression": [101, 214, 240],
+  "firing_pin_drag_direction": [49, 110, 246]
+}

@@ -1,0 +1,24 @@
+# Explicit build context: never send starter binaries or private workspaces.
+**
+!go.mod
+!go.sum
+!cmd/
+!cmd/reviewapp/
+!cmd/reviewapp/main.go
+!internal/
+!internal/reviewapp/
+!internal/reviewapp/*.go
+internal/reviewapp/*_test.go
+!web/
+!web/package.json
+!web/package-lock.json
+!web/index.html
+!web/vite.config.js
+!web/src/
+!web/src/**
+!python/
+!python/*.py
+!python/requirements.txt
+!deployment/
+!deployment/bootstrap.py
+!deployment/starter.sha256

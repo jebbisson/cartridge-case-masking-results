@@ -1,0 +1,29 @@
+services:
+  workbench:
+    build: .
+    image: cartridge-case-workbench:review
+    platform: linux/amd64
+    init: true
+    ports:
+      - "127.0.0.1:${REVIEWAPP_PORT:-8787}:8787"
+    volumes:
+      - workspace:/data
+      - type: bind
+        source: ./starter
+        target: /opt/starter
+        read_only: true
+        bind:
+          create_host_path: false
+    environment:
+      REVIEWAPP_EMPTY_START: ${REVIEWAPP_EMPTY_START:-0}
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/api/cases', timeout=2).close()"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  workspace:

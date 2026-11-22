@@ -4,9 +4,9 @@
 
 See the [starter workflow diagram](../docs/architecture.md#starter-workflow).
 
-The intended first run opens a small set of real 9×19 mm development scans and makes the **same fitted Run #3 mask-only checkpoint** available for an estimate without retraining. This directory documents that design; it does not authorize shipping local assets. The exact starter files, including any derived labels, screenshots, and checkpoint, are still under rights review. Local candidates are for working-tree review only and are **not for release**.
+The workbench seeds a fresh workspace with **30 approved real 9×19 mm development scans** and the **same fitted Run #3 mask-only checkpoint**. The [Docker build](../docs/deployment.md#start-and-stop) embeds the verified seed so an estimate works without retraining. The exact assets are still under rights review and are **not for release**.
 
-The planned bundle contains a SQLite seed prepared for distribution, its matching checkpoint, and a `SHA256SUMS` file. The loader checks the files before installing them into a fresh volume. Checksums detect mismatches; they do not establish provenance or redistribution rights. The imported model's run number in a fresh workspace may differ from the original training run number. “Run #3” refers to the fitted artifact, not the UI counter.
+`starter/full-bundle/` contains the SQLite seed, its matching checkpoint, and `SHA256SUMS`. The build and loader verify the files against independent pins. An existing workspace is never reseeded. The UI displays the imported model as Run #1; “Run #3” refers to the original fitted artifact.
 
 ## Data and model sources
 
@@ -15,11 +15,11 @@ The planned bundle contains a SQLite seed prepared for distribution, its matchin
 | Microscopy PNGs | Xiaoyu Alan Zheng (2019), [*NIST Ballistics Toolmark Research Database*](https://doi.org/10.18434/M32021), National Institute of Standards and Technology. The 2D reflectance scans were obtained separately from the masks. | The local starter preserves scan pixels and sampling metadata, but strips PNG text and timestamp chunks. The files are not byte-for-byte originals. Check the rights and required credits for the exact scans; [NIST licensing guidance](https://www.nist.gov/open/license) does not automatically clear third-party material. |
 | Source masks | University of Dundee breech-face and firing-pin masks; see the [attribution below](#dundee-mask-attribution). | Some were retained after resizing; others were edited or replaced. Dundee did not provide separate aperture, exterior scrape, or directional arrow annotations for this workbench. |
 | Local annotations | GPT-assisted drafts and subsequent review and edits in the workbench. | These include targets that Dundee did not provide. Only approved versions of the training cases were used for fitting. |
-| Run #3 checkpoint | Fitted locally on 30 approved development cases using the [Python estimator](../python/README.md). | This is not a Dundee checkpoint or a GPT model. The four starter cases are a subset of the training cohort. Checkpoint redistribution is a separate decision. |
+| Run #3 checkpoint | Fitted locally on the 30 approved development cases using the [Python estimator](../python/README.md). | This is not a Dundee checkpoint or a GPT model. Checkpoint redistribution is a separate decision. |
 
 ## How the training masks were made
 
-We used Dundee's coarse masks as starting points where they matched a scan and view. GPT generated initial annotation proposals from the real scans, including for targets that lacked a reference mask. We then reviewed and edited the combined drafts in the workbench. The frozen Run #3 training set contains both local labels and retained or adapted Dundee labels. Two approved center-pocket masks still match the resized Dundee masks pixel for pixel. None of the four starter cases' breech-face or center-pocket masks matches its resized Dundee counterpart exactly; a changed boundary does not make a mask independently authored.
+We used Dundee's coarse masks as starting points where they matched a scan and view. GPT generated initial annotation proposals from the real scans, including for targets that lacked a reference mask. We then reviewed and edited the combined drafts in the workbench. The frozen Run #3 training set contains both local labels and retained or adapted Dundee labels. Two approved center-pocket masks still match the resized Dundee masks pixel for pixel. A changed boundary does not make a mask independently authored. See the [cohort attribution](../training/ATTRIBUTION.md) for details.
 
 The saved starter annotations are not fresh estimates. **Run new estimate** invokes the locally fitted CPU model, not GPT. It proposes masks only and does not generate drag-direction arrows.
 

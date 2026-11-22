@@ -17,10 +17,11 @@ MAX_TRAIN_GRID_CELLS = 2_200_000
 
 def prepare(rows, root):
     """Read supervised masks from train rows and track positives lost at grid scale."""
-    # The app owns approval; shared snapshot rules distinguish explicit absence
-    # from unknown, proposal and prediction labels, which give no supervision.
+    # Use the shared label parser so only explicit absence, not unknown labels
+    # or suggestions, supplies an empty mask.
     supervision = [list(legacy.supervised_masks(row)) for row in rows]
-    # Check the total retained feature budget before decoding any assets.
+    # Fail early: the cap is for feature grids held across scans, not just the
+    # samples that eventually reach the classifier.
     cells = 0
     for row, labels in zip(rows, supervision, strict=True):
         if labels:
@@ -43,6 +44,8 @@ def prepare(rows, root):
             if path is None:
                 masks[key] = np.zeros((h, w), dtype=bool)
                 continue
+            # Check the original PNG for alignment and binary values before
+            # Pillow's box resize uses average coverage to assign grid labels.
             with Image.open(legacy.asset(root, path)) as mask:
                 if (mask.format != 'PNG' or mask.mode not in ('1', 'L') or mask.size != image.size
                         or getattr(mask, 'n_frames', 1) != 1):
@@ -62,6 +65,8 @@ def prepare(rows, root):
 
 
 def new_classifier(iterations):
+    # Histogram-based trees let scikit-learn learn nonlinear combinations of
+    # pixel features on CPU; disabling early stopping keeps the fit length fixed.
     return HistGradientBoostingClassifier(max_iter=iterations, max_leaf_nodes=31,
         min_samples_leaf=45, learning_rate=.11, l2_regularization=1.5,
         early_stopping=False, random_state=SEED)
@@ -83,16 +88,23 @@ def fit_regions(grids, indices, iterations):
             yes, no = np.flatnonzero(m), np.flatnonzero(~m)
             if len(yes):
                 masks.append(m)
-            # Bound samples per scan, retaining hard negatives near mask edges.
+            # Cap each scan's samples. Uniform background sampling can miss
+            # hard negatives that resemble the target just outside its edge.
+            # SciPy dilation gives that band its own quota; deduplicate the
+            # merged negatives so the two draws don't count a pixel twice.
             edge = np.flatnonzero(ndi.binary_dilation(m, iterations=6) & ~m)
             p = rng.choice(yes, min(len(yes), 1600), replace=False)
             n = np.unique(np.r_[rng.choice(no, min(len(no), 2300), replace=False),
                                 rng.choice(edge, min(len(edge), 1000), replace=False)])
             xs.extend((data[p], data[n]))
             ys.extend((np.ones(len(p), dtype=np.uint8), np.zeros(len(n), dtype=np.uint8)))
+            # Give each scan the same total weight per nonempty class (1800
+            # positive, 2800 negative), regardless of how many pixels it yields.
             ws.extend((np.full(len(p), 1800/max(1,len(p))), np.full(len(n), 2800/max(1,len(n)))))
         if masks:
-            # Positive masks share a canonical grid even when scans differ in size.
+            # Resize positive masks to a shared grid so each contributes equally
+            # in relative scan coordinates. Smooth their mean into a soft location
+            # cue for inference, not an outline or an estimate of region prevalence.
             shape = inference.CANONICAL_SHAPE
             average = np.mean([inference.resize_prior(m, shape) for m in masks], axis=0).astype(np.float32)
             priors[key] = ndi.gaussian_filter(average, 2.0)

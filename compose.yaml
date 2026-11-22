@@ -1,6 +1,9 @@
 services:
   workbench:
-    build: .
+    build:
+      context: .
+      additional_contexts:
+        starter_bundle: ./starter/full-bundle
     image: cartridge-case-workbench:review
     platform: linux/amd64
     init: true
@@ -8,14 +11,6 @@ services:
       - "127.0.0.1:${REVIEWAPP_PORT:-8787}:8787"
     volumes:
       - workspace:/data
-      - type: bind
-        source: ./starter
-        target: /opt/starter
-        read_only: true
-        bind:
-          create_host_path: false
-    environment:
-      REVIEWAPP_EMPTY_START: ${REVIEWAPP_EMPTY_START:-0}
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
     healthcheck:
@@ -27,3 +22,5 @@ services:
 
 volumes:
   workspace:
+    # Select a fresh seed without deleting the current workspace.
+    name: "${REVIEWAPP_WORKSPACE_VOLUME:-${COMPOSE_PROJECT_NAME}_workspace}"

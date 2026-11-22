@@ -26,10 +26,20 @@ RUN pip install --no-cache-dir --only-binary=:all: -r python/requirements.txt \
     && install -m 0640 -o workbench -g workbench /dev/null /data/.workbench-volume
 COPY --from=go-build /out/reviewapp /usr/local/bin/reviewapp
 COPY --from=web-build /src/web/dist /app/web/dist
+COPY LICENSE /app/LICENSE
 COPY python/*.py /app/python/
 COPY deployment/bootstrap.py /app/deployment/bootstrap.py
-COPY deployment/starter.sha256 /app/deployment/starter.sha256
+
+# The release image has one starter. Copy only fixed, independently pinned
+# files from the dedicated build context, never the dataset or a working DB.
+COPY deployment/starter.full.sha256 /app/deployment/starter.sha256
+COPY training/ATTRIBUTION.md /opt/starter/ATTRIBUTION.md
+COPY --from=starter_bundle --chmod=0444 /SHA256SUMS /opt/starter/bundle/SHA256SUMS
+COPY --from=starter_bundle --chmod=0444 /review.sqlite /opt/starter/bundle/review.sqlite
+COPY --from=starter_bundle --chmod=0444 /review.sqlite.runs/1/checkpoint.json /opt/starter/bundle/review.sqlite.runs/1/checkpoint.json
 USER 10001:10001
+RUN cd /opt/starter/bundle && cmp SHA256SUMS /app/deployment/starter.sha256 && sha256sum -c /app/deployment/starter.sha256
+
 EXPOSE 8787
 ENTRYPOINT ["python", "/app/deployment/bootstrap.py"]
 CMD ["/usr/local/bin/reviewapp", "-addr", "0.0.0.0:8787", "-db", "/data/review.sqlite", "-web", "/app/web/dist", "-python", "/usr/local/bin/python", "-worker", "/app/python/multiscale_worker.py"]

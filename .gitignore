@@ -1,5 +1,6 @@
-# Local review assets are not licensed for release merely by being present.
+# Keep local workspaces and generated reports out of Git.
 /starter/bundle/
+/training/results/
 /.local/
 /.env
 __pycache__/
@@ -9,3 +10,25 @@ __pycache__/
 *.sqlite-shm
 *.sqlite-wal
 *.sqlite.runs/
+
+# Expose only the curated dataset and starter file layouts for local review.
+# Inclusion here does not authorize redistribution; see training/ATTRIBUTION.md.
+/training/dataset/**
+!/training/dataset/ATTRIBUTION.md
+!/training/dataset/SHA256SUMS
+!/training/dataset/manifest.jsonl
+!/training/dataset/images/
+!/training/dataset/images/*.png
+!/training/dataset/masks/
+!/training/dataset/masks/*/
+!/training/dataset/masks/*/aperture_shear.png
+!/training/dataset/masks/*/breech_face.png
+!/training/dataset/masks/*/firing_pin_impression.png
+!/training/dataset/masks/*/firing_pin_shear.png
+
+/starter/full-bundle/**
+!/starter/full-bundle/SHA256SUMS
+!/starter/full-bundle/review.sqlite
+!/starter/full-bundle/review.sqlite.runs/
+!/starter/full-bundle/review.sqlite.runs/1/
+!/starter/full-bundle/review.sqlite.runs/1/checkpoint.json

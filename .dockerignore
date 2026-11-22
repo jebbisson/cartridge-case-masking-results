@@ -1,7 +1,8 @@
-# Explicit build context: never send starter binaries or private workspaces.
+# Default context: never send starter binaries or private workspaces.
 **
 !go.mod
 !go.sum
+!LICENSE
 !cmd/
 !cmd/reviewapp/
 !cmd/reviewapp/main.go
@@ -21,4 +22,6 @@ internal/reviewapp/*_test.go
 !python/requirements.txt
 !deployment/
 !deployment/bootstrap.py
-!deployment/starter.sha256
+!deployment/starter.full.sha256
+!training/
+!training/ATTRIBUTION.md

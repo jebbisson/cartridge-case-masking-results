@@ -20,6 +20,9 @@ import tempfile
 from PIL import Image, ImageChops, ImageFilter, __version__ as PILLOW_VERSION
 
 
+# The legacy CLI and multiscale worker share the target names, snapshot and
+# asset checks, and JSON output helpers. Go owns approval and export; parsing
+# an export here does not establish that a revision was approved.
 MASK_TARGETS = ('breech_face', 'aperture_shear', 'firing_pin_shear', 'firing_pin_impression')
 TARGETS = (*MASK_TARGETS, 'firing_pin_drag_direction')
 MODEL_VERSION = 'review-pixel-logistic-v1'
@@ -57,6 +60,8 @@ def unique_object(pairs):
 
 
 def asset(root, value):
+    # Resolve symlinks before checking containment so an export stays within
+    # its own asset root.
     if not isinstance(value, str) or not value or Path(value).is_absolute():
         raise ValueError(f'expected a relative asset path, got {value!r}')
     path = (root / value).resolve()
@@ -88,6 +93,9 @@ def manifest_rows(data):
 
 
 def supervised_masks(row):
+    # Both fitters consume (target, relative mask path) for a reviewed positive
+    # or (target, None) for an explicit negative. No tuple means no supervision,
+    # so unknown labels, proposals and predictions cannot become negatives.
     labels = row.get('labels')
     if not isinstance(labels, dict):
         raise ValueError('missing labels object')
@@ -112,6 +120,8 @@ def supervised_masks(row):
 
 
 def read_image(path_or_stream):
+    # A single PNG frame gives one pixel grid for mask alignment. Convert with
+    # Pillow so both fitters see the same grayscale intensity input.
     with Image.open(path_or_stream) as im:
         if im.format != 'PNG' or getattr(im, 'n_frames', 1) != 1:
             raise ValueError('expected a single-frame PNG image')
@@ -132,6 +142,8 @@ def grid_size(size):
 
 
 def feature_grid(image):
+    # The legacy weights depend on this feature order. Pillow supplies the
+    # resampling and texture cues without the multiscale numerical stack.
     gray = image.resize(grid_size(image.size), Image.Resampling.BILINEAR)
     blur_1, blur_4, blur_10 = (gray.filter(ImageFilter.GaussianBlur(r)) for r in (1, 4, 10))
     texture = ImageChops.difference(gray, blur_1).filter(ImageFilter.GaussianBlur(1))
@@ -243,6 +255,8 @@ def train(manifest, out):
 
 
 def predict(model, image_path, out, *, model_data=None):
+    # The multiscale caller passes bytes it has already digest-checked; the
+    # standalone legacy CLI reads the JSON checkpoint itself.
     if model_data is None:
         model_data = model.read_bytes()
     checkpoint = json.loads(model_data, object_pairs_hook=unique_object)

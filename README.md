@@ -8,15 +8,31 @@ A local browser workbench for reviewing pixel masks on fired cartridge-case micr
 
 The intended hosts are **Windows x86-64** with [Docker Desktop in Linux-container mode using WSL 2](https://docs.docker.com/desktop/features/wsl/) and **Linux x86-64** with [Docker Engine](https://docs.docker.com/engine/install/) and the Compose plugin. No GPU or host Python is required; the container uses a pinned Python 3.14 runtime.
 
-Once the Compose configuration and cleared starter bundle are available, run this from the repository root:
+With the verified starter bundle at `starter/full-bundle/`, run this from the repository root using a local Docker builder:
 
 ```sh
 docker compose up --build -d
 ```
 
-Open [localhost:8787](http://localhost:8787/), choose a seeded real case, and select **Run new estimate**. The intended first run uses the same fitted Run #3 checkpoint; it does not require retraining. The estimate is an unsaved preview until you save or approve it.
+Open [localhost:8787](http://localhost:8787/). A fresh workspace has 30 approved cases and the fitted Run #3 model, so **Run new estimate** works without retraining. The estimate is an unsaved preview until you save or approve it. An existing workspace is preserved on upgrade.
 
 Stop with `docker compose down`. The named volume mounted at `/data` keeps your work; do not add `-v` unless you intend to delete it.
+
+### Reload Docker with the new starter data
+
+From the repository root, rebuild and recreate the same workbench on a fresh volume. A plain restart or rebuild keeps the old data.
+
+```sh
+REVIEWAPP_WORKSPACE_VOLUME=cartridge-case-workbench-run3 docker compose up --build --force-recreate --wait
+```
+
+On Linux if Docker requires `sudo`, run:
+
+```sh
+sudo env REVIEWAPP_WORKSPACE_VOLUME=cartridge-case-workbench-run3 docker compose up --build --force-recreate --wait
+```
+
+Open or refresh [localhost:8787](http://localhost:8787/) to see the 30 cases. The previous volume and any edits stay intact; repeat the reload command to keep using the new workspace. See [Workspace and backups](docs/deployment.md#workspace-and-backups) for PowerShell and how to switch back.
 
 ## Screenshot slots
 
@@ -31,10 +47,11 @@ No screenshots are bundled. Use only cleared real scans and overlays for these s
 | --- | --- |
 | [Browser editor](web/README.md) | How to preview estimates, edit masks and arrows, compare revisions, and save or approve changes. Also covers local React development and testing. |
 | [Python estimator](python/README.md) | How the CPU model trains and predicts masks, how Go calls the Python worker, and which prior work informed the method. |
+| [Training data and evaluation](training/README.md) | The approved training snapshot, data sources, and how to reproduce the grouped model tests. |
 | [Starter cases and data credits](starter/README.md) | Which scans, annotations, and model are used for a fresh workspace, where they came from, and what can be redistributed. |
 
 - [System architecture](docs/architecture.md#system-overview) — Mermaid diagrams showing how the browser, Go API, Python worker, and workspace fit together.
-- [Deployment and native development](docs/deployment.md) — Docker setup, troubleshooting, running without Docker, and managing the persistent workspace.
+- [Deployment](docs/deployment.md) — Docker setup, upgrades, troubleshooting, and managing the persistent workspace.
 
 ## License and data credits
 

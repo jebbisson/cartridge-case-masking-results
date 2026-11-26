@@ -3,6 +3,8 @@
 /training/results/
 /.local/
 /.env
+/windows-before.json
+/windows-after.json
 __pycache__/
 *.py[cod]
 .venv/

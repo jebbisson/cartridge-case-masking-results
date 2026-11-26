@@ -24,6 +24,8 @@ A local browser workbench for reviewing pixel masks on fired cartridge-case micr
 
 The intended hosts are **Windows x86-64** with [Docker Desktop in Linux-container mode using WSL 2](https://docs.docker.com/desktop/features/wsl/) and **Linux x86-64** with [Docker Engine](https://docs.docker.com/engine/install/) and the Compose plugin. No GPU or host Python is required; the container uses a pinned Python 3.14 runtime.
 
+**Windows:** Follow the [Windows setup and acceptance test](docs/windows.md) for the test branch, PowerShell checks, and safe workspace handling. Compose builds the same `linux/amd64` image on both hosts; this is not a native Windows build. Windows Docker Desktop validation is awaiting the user-machine test, and this repository does not yet have automated CI.
+
 With the verified starter bundle at `starter/full-bundle/`, run this from the repository root using a local Docker builder:
 
 ```sh

@@ -9,9 +9,11 @@
 
 Use Docker Compose 2.17 or later with a local builder that supports named build contexts. The app uses one Linux x86-64 container, a pinned Python 3.14 runtime, and CPU inference. No GPU runtime, CUDA, API keys, host Python, Go, or Node are needed to run it. The first build needs access to base images and package downloads. The intended platforms are not a compatibility claim until the build has passed on both.
 
+See [Windows setup and acceptance test](windows.md) for PowerShell instructions and the manual Windows test checklist. The Compose target is `linux/amd64` even on Windows; Docker Desktop supplies the Linux backend. The Windows Docker Desktop run remains pending user-machine verification. No automated CI currently replaces this test.
+
 ## Start and stop
 
-Put the verified starter bundle at `starter/full-bundle/`. Its three database transport parts (at most 64 MiB each), fitted checkpoint, `PARTS.sha256`, and full-file `SHA256SUMS` are checked against the repository's independent pins at build time. The image includes those files and their attribution; it does not include the separate training export. The current bundle and image are for local use only while redistribution rights are reviewed. Run from the repository root:
+Put the verified starter bundle at `starter/full-bundle/`. Its three database transport parts (at most 64 MiB each), fitted checkpoint, `PARTS.sha256`, and full-file `SHA256SUMS` are checked against the repository's independent pins at build time. The image includes those files and their attribution; it does not include the separate training export. The bundle follows the [published asset-specific terms](data-licenses.md); preserve these notices when redistributing the image. Run from the repository root:
 
 ```sh
 docker compose up --build -d

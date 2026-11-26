@@ -27,4 +27,4 @@ npm run build
 
 Go serves `web/dist`. To work on the UI separately, start the [native Go backend](../docs/deployment.md#native-development), then run `npm run dev` here. Vite binds to `127.0.0.1` and proxies `/api` to `http://127.0.0.1:8787`; set `REVIEW_API_URL` before starting Vite if the backend uses a different local port.
 
-For a browser check, use a disposable workspace with an authorized real scan. Compare the original and estimate at the same zoom, save a one-pixel draft edit, and reopen it. Confirm that switching revisions preserves unsaved edits, that cancellation leaves the history alone, and that a mask estimate neither changes a saved arrow nor adds one where none existed.
+For a browser check, use a disposable workspace with an authorized real scan. Compare the original and estimate at the same zoom, save a one-pixel draft edit, and reopen it. Confirm that switching revisions preserves unsaved edits, that an estimate creates or replaces an arrow in the unsaved buffer, and that cancellation restores the saved state without changing history. Saved revisions and approvals must remain unchanged until an explicit save or approval.

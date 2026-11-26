@@ -10,6 +10,8 @@ The bundled CPU estimator uses the Run #3 mask-only baseline. Drag-direction arr
 
 **New to the app? [Read the illustrated user guide](docs/user-guide.md)** for a tour of the interface, mask and arrow editing, saving versus approval, training changes, safe scan intake, and workspace backups.
 
+**Research findings:** [Multi-caliber pilot: tests, results, and recommended approach](docs/research/multi-caliber-pilot.md) reports the private .40 S&W transfer experiment, coarse-reference measurements, limitations, and next steps. The additional scans and experimental outputs are not part of the public starter or its supported scope.
+
 ## Methodology
 
 1. **Prepare real scans and annotations.** The current training snapshot contains 30 NIST 9×19 mm (9 mm Luger) reflectance-microscopy scans across 15 source groups. We matched Dundee reference masks to the scan and view, aligned them to native dimensions, and combined retained or adapted masks with GPT-assisted drafts and subsequent workbench review. The original scan pixels are preserved; annotations are separate native-resolution binary layers and ordered arrow endpoints. See [data sources and annotation preparation](starter/README.md#how-the-training-masks-were-made).

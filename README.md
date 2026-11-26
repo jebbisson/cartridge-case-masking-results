@@ -8,7 +8,7 @@ Through the web interface, experts can inspect scans, correct masks, curate trai
 
 A local browser workbench for reviewing pixel masks on fired cartridge-case microscopy PNGs. Compare an estimate with the original scan, correct masks at native resolution, and save revisions without changing the original. The CPU estimator uses the Run #3 mask-only baseline. Drag-direction arrows can be edited by hand; the estimator does not create or change them.
 
-Docker packages the application and its dependencies to simplify deployment on supported machines. The default setup runs locally; hosting it on a network would require appropriate authentication, HTTPS, and access controls.
+Docker packages the application and its dependencies so the same tool can run on a local machine or be deployed to a network location and accessed through a browser. The goal is to make it easy to deploy wherever it is needed, without requiring users to configure a development environment.
 
 **Release status:** Research/development release with 48 real scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
 

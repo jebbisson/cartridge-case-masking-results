@@ -2,6 +2,8 @@
 
 [Back to the workbench README](../README.md#documentation)
 
+**Using the app? Start with the [illustrated user guide](../docs/user-guide.md)**—real screenshots, numbered interface areas, and step-by-step review, save, training, and scan-intake workflows. This README also covers frontend development.
+
 The React UI receives the case queue, originals, saved masks, revisions, and training state from the local Go API. See the [browser editor diagram](../docs/architecture.md#browser-editor-flow). The frontend does not ship its own scans or generate labels.
 
 ## Review a case

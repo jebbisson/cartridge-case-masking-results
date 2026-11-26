@@ -4,6 +4,8 @@ A local browser workbench for reviewing pixel masks on fired cartridge-case micr
 
 **Release status:** Research/development release with 48 real scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
 
+**New to the app? [Read the illustrated user guide](docs/user-guide.md)** for a tour of the interface, mask and arrow editing, saving versus approval, training changes, safe scan intake, and workspace backups.
+
 **Research findings:** [Multi-caliber pilot: tests, results, and recommended approach](docs/research/multi-caliber-pilot.md) reports the private .40 S&W transfer experiment, coarse-reference measurements, limitations, and next steps. The additional scans and experimental outputs are not part of the public starter or its supported scope.
 
 ## Methodology
@@ -56,7 +58,25 @@ Prefix both commands with `sudo` if your Linux Docker setup requires it. On star
 
 ## Sample outputs — deferred
 
-Side-by-side original scans and generated masks are intentionally deferred while annotation quality is improved. No sample-output images are bundled yet, so that deliverable remains outstanding. When added, figures must distinguish model predictions from saved training labels, identify whether the scan was used for fitting, and preserve the same crop and scale with the required source credits. No accuracy claim is inferred from a demonstration image.
+Side-by-side original scans and generated masks are intentionally deferred while annotation quality is improved. No sample-output images are bundled yet, so that deliverable remains outstanding. When added, figures must distinguish model predictions from saved training labels, identify whether the scan was used for fitting, and preserve the same crop and scale with the required source credits. No accuracy claim is inferred from a demonstration image. The [user guide's interface screenshots](docs/user-guide.md) explain controls and workflow states; they do not fulfill this separate sample-output requirement.
+
+## Repository map
+
+| Folder | What is inside |
+| --- | --- |
+| [`cmd/`](cmd/) | `reviewapp/`: Go executable entry point, startup flags, local-server setup, and startup tests. |
+| [`deployment/`](deployment/) | Container bootstrap and seed-part assembly scripts, independent starter checksum pins, and deployment tests. |
+| [`docs/`](docs/) | The illustrated [user guide](docs/user-guide.md), its screenshots in `images/user-guide/`, architecture diagrams, deployment/backups, and asset-specific license notices. |
+| [`internal/`](internal/) | `reviewapp/`: Go API, SQLite storage, scan intake, annotation revisions/approvals, training snapshots, worker orchestration, and backend tests. |
+| [`python/`](python/) | CPU training/inference workers, multiscale model implementation, dependency requirements, and estimator documentation. |
+| [`starter/`](starter/) | Runtime seed and credits. `full-bundle/` holds immutable SQLite transport parts, checksums, and the fitted model used to initialize a **fresh** workspace; it is not the live editable database. |
+| [`tests/`](tests/) | Python worker integration tests. Component-specific tests also live beside Go, frontend, deployment, and evaluation code. |
+| [`training/`](training/) | Data attribution, verification, and grouped evaluation. `dataset/manifest.jsonl` inventories **all 48 scans** with image/mask assets; `dataset/train.jsonl` is the explicit **30-case approved training export**, not the full mixed-split inventory. |
+| [`web/`](web/) | React browser editor, styles, frontend build configuration, unit tests in `test/`, and browser QA scripts in `qa/`. |
+
+At the root, [`Dockerfile`](Dockerfile) builds the app and verifies the starter seed; [`compose.yaml`](compose.yaml) configures the local service and persistent named volume; [`LICENSE`](LICENSE) contains the software's MIT license (data, annotations, and model have [separate terms](docs/data-licenses.md)). `go.mod` and `go.sum` pin Go dependencies.
+
+**Live Docker data is outside this repository dataset:** the named volume mounted at `/data` stores imported scans, saved revisions, and run/checkpoint files. Editing in the app does not update `starter/` or `training/dataset/`. Generated local workspaces, dependency/build directories, and temporary files are not additional shipped source folders. See [Workspace and backups](docs/deployment.md#workspace-and-backups).
 
 ## Documentation
 

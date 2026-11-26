@@ -1,0 +1,26 @@
+services:
+  workbench:
+    build:
+      context: .
+      additional_contexts:
+        starter_bundle: ./starter/full-bundle
+    image: cartridge-case-workbench:review
+    platform: linux/amd64
+    init: true
+    ports:
+      - "127.0.0.1:${REVIEWAPP_PORT:-8787}:8787"
+    volumes:
+      - workspace:/data
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/api/cases', timeout=2).close()"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  workspace:
+    # Select a fresh seed without deleting the current workspace.
+    name: "${REVIEWAPP_WORKSPACE_VOLUME:-${COMPOSE_PROJECT_NAME}_workspace}"

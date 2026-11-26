@@ -1,0 +1,38 @@
+# Keep local workspaces and generated reports out of Git.
+/starter/bundle/
+/training/results/
+/.local/
+/.env
+__pycache__/
+*.py[cod]
+.venv/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite.runs/
+
+# Expose only the curated release dataset and fixed starter file layouts.
+# Asset-specific terms remain separate; see training/ATTRIBUTION.md.
+/training/dataset/**
+!/training/dataset/ATTRIBUTION.md
+!/training/dataset/SHA256SUMS
+!/training/dataset/manifest.jsonl
+!/training/dataset/train.jsonl
+!/training/dataset/images/
+!/training/dataset/images/*.png
+!/training/dataset/masks/
+!/training/dataset/masks/*/
+!/training/dataset/masks/*/aperture_shear.png
+!/training/dataset/masks/*/breech_face.png
+!/training/dataset/masks/*/firing_pin_impression.png
+!/training/dataset/masks/*/firing_pin_shear.png
+
+/starter/full-bundle/**
+!/starter/full-bundle/SHA256SUMS
+!/starter/full-bundle/PARTS.sha256
+!/starter/full-bundle/review.sqlite.part-000
+!/starter/full-bundle/review.sqlite.part-001
+!/starter/full-bundle/review.sqlite.part-002
+!/starter/full-bundle/review.sqlite.runs/
+!/starter/full-bundle/review.sqlite.runs/1/
+!/starter/full-bundle/review.sqlite.runs/1/checkpoint.json

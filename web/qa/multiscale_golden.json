@@ -1,0 +1,23 @@
+{
+  "18d0a850-fd47-4e21-9097-e1f5d68c7084": {
+    "aperture_shear": "b0df36dd2c7c0f804b4fd09ebab50c649f4cfcdd6b1065b92a3c5137e83c6858",
+    "breech_face": "8f6406bec94c67a6b87fc6e3af1c474451a51ce1f773a35b8970348d473f125e",
+    "firing_pin_drag_direction": null,
+    "firing_pin_impression": null,
+    "firing_pin_shear": "4fdda6cf49b1f394bc26f18c3475b650ae9d0b9274736fc7236f363333f72416"
+  },
+  "2a93d964-2891-44e5-afe0-8f99825da70b": {
+    "aperture_shear": "3d888f54db18d029eab910893e320b8f2be187ae8be532e31b841287492410a4",
+    "breech_face": "8618e35dee4f40e0878efd2e512a2389227d74bbd121a86eeed34d1809115363",
+    "firing_pin_drag_direction": null,
+    "firing_pin_impression": "30ee2a5682685480fea9902ab2ee77ff44cc558b42399d97697eb21cbba39981",
+    "firing_pin_shear": "f6ad03ccae38e16aab8b77db1d4084ac07c89d867bf2531b73dca3c117958c39"
+  },
+  "de971355-1ace-4ef0-bc89-67edda8b208d": {
+    "aperture_shear": "253cb72ebeb7484a69e2919baafd5934bc9f03e2ad6d5f9413947149e70a8a82",
+    "breech_face": "6879dfc6ce4f2e47c5fe0f6bfd71c1b0b2f3bfa58df64f9dbf4b19ff15da270d",
+    "firing_pin_drag_direction": null,
+    "firing_pin_impression": "023ec67495061076ef290afe255363ca4f3d60a61ef673b274a51d032c48152f",
+    "firing_pin_shear": "8a8d62c8d78974ede375ded0e651f5eb4b3b851821f551fbf2c978b6611548d0"
+  }
+}

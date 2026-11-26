@@ -1,0 +1,44 @@
+{
+  "image_sha256": "e8398aaf2a8c9fbc4896f671fa0e870b662f74241297cb690707f3899e619b32",
+  "targets": {
+    "breech_face": {
+      "status": "present",
+      "mask": "breech_face.png"
+    },
+    "aperture_shear": {
+      "status": "indeterminate"
+    },
+    "firing_pin_shear": {
+      "status": "present",
+      "mask": "firing_pin_shear.png"
+    },
+    "firing_pin_impression": {
+      "status": "present",
+      "mask": "firing_pin_impression.png"
+    },
+    "firing_pin_drag_direction": {
+      "status": "present",
+      "start": [
+        1352,
+        1068
+      ],
+      "end": [
+        1696,
+        1058
+      ]
+    }
+  },
+  "source": "prediction",
+  "model_version": "review-multiscale-cleanup-v1",
+  "model_sha256": "a4056cde70e06dc75314ca295f9dafa58e479c5b4b220176e708559a5e225a21",
+  "arrow_prediction": {
+    "method": "predicted_support_geometry",
+    "fallback": false,
+    "best_effort": true,
+    "quantization_repaired": false,
+    "endpoint_semantics": "ordered estimates, not verified impact points",
+    "head_version": "ordered-arrow-prior-v1",
+    "head_manifest_sha256": "c563e60a47479831139ea0c0ef4b9bb88e2019e1ff6be481bd741d13e456ff07",
+    "annotation_count": 17
+  }
+}

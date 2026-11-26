@@ -8,7 +8,7 @@ The React UI receives the case queue, originals, saved masks, revisions, and tra
 
 ## Review a case
 
-1. Open a case. **Original** hides the overlays without altering the source PNG. **Run new estimate** previews masks from the active model as unsaved edits. It does not generate a drag arrow or modify one already on the case.
+1. Open a case. **Original** hides the overlays without altering the source PNG. **Run new estimate** previews masks and a best-effort directed arrow as unsaved edits. The proposed arrow replaces any arrow in the edit buffer, but saved annotations stay unchanged until **Save draft** or **Approve**. Use **Cancel edits** to restore the saved revision.
 2. Select a mask layer and use **Brush** or **Eraser**. Brush diameter is measured in native pixels; zoom in with a size-1 brush for a one-pixel correction. To edit a defensible drag direction manually, choose **Arrow**, drag tail to tip, and correct with the endpoint handles or **Reverse arrow**. Leave a direction indeterminate when the scan does not support it.
 3. In **Revisions**, select a saved revision to compare, then choose **Back to unsaved edits** to return. Historical revisions are read-only. **Cancel edits** discards only the unsaved work. **Save draft** persists a new draft; **Approve** saves a new approved revision. Saving a draft or running an estimate does not replace the approved revision used for training.
 4. Use **Training changes** to inspect the next snapshot. **Confirm & retrain** submits the exact fingerprint shown in the preview. Only eligible, included training cases contribute approved labels; unsaved edits and unapproved drafts are not training inputs.
@@ -27,4 +27,4 @@ npm run build
 
 Go serves `web/dist`. To work on the UI separately, start the [native Go backend](../docs/deployment.md#native-development), then run `npm run dev` here. Vite binds to `127.0.0.1` and proxies `/api` to `http://127.0.0.1:8787`; set `REVIEW_API_URL` before starting Vite if the backend uses a different local port.
 
-For a browser check, use a disposable workspace with an authorized real scan. Compare the original and estimate at the same zoom, save a one-pixel draft edit, and reopen it. Confirm that switching revisions preserves unsaved edits, that cancellation leaves the history alone, and that a mask estimate neither changes a saved arrow nor adds one where none existed.
+For a browser check, use a disposable workspace with an authorized real scan. Compare the original and estimate at the same zoom, save a one-pixel draft edit, and reopen it. Confirm that switching revisions preserves unsaved edits, that an estimate creates or replaces an arrow in the unsaved buffer, and that cancellation restores the saved state without changing history. Saved revisions and approvals must remain unchanged until an explicit save or approval.

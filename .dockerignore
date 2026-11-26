@@ -21,6 +21,7 @@ internal/reviewapp/*_test.go
 !web/src/**
 !python/
 !python/*.py
+!python/arrow_head_v1.json
 !python/requirements.txt
 !deployment/
 !deployment/bootstrap.py

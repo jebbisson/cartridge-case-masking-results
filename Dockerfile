@@ -29,6 +29,7 @@ COPY --from=web-build /src/web/dist /app/web/dist
 COPY LICENSE /app/LICENSE
 COPY docs/data-licenses.md /opt/starter/DATA-LICENSES.md
 COPY python/*.py /app/python/
+COPY python/arrow_head_v1.json /app/python/arrow_head_v1.json
 COPY deployment/bootstrap.py /app/deployment/bootstrap.py
 COPY deployment/assemble_seed.py /app/deployment/assemble_seed.py
 COPY deployment/starter.parts.sha256 /app/deployment/starter.parts.sha256

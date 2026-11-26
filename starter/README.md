@@ -21,7 +21,7 @@ The workbench seeds a fresh workspace with **48 real 9×19 mm cohort scans: 30 a
 
 We used Dundee's coarse masks as starting points where they matched a scan and view. GPT generated initial annotation proposals from the real scans, including for targets that lacked a reference mask. We then reviewed and edited the combined drafts in the workbench. The frozen Run #3 training set contains both local labels and retained or adapted Dundee labels. Two approved center-pocket masks still match the resized Dundee masks pixel for pixel. A changed boundary does not make a mask independently authored. See the [cohort attribution](../training/ATTRIBUTION.md) for details.
 
-The saved starter annotations are not fresh estimates. **Run new estimate** invokes the locally fitted CPU model, not GPT. It proposes masks only and does not generate drag-direction arrows.
+The saved starter annotations are not fresh estimates. **Run new estimate** invokes the locally fitted CPU mask model and best-effort arrow estimator, not GPT. The original mask checkpoint is unchanged; a companion prior learned from the 17 annotated training arrows supplies direction/length when predicted pocket/scrape support is weak. New estimates include an arrow without changing saved labels until explicitly saved or approved.
 
 ## Dundee mask attribution
 
@@ -37,4 +37,4 @@ Keep the source credit, dataset and license links, and change notice with any di
 - No assignment PDF or scans extracted from it, and no private databases, manifests, research history, or experimental model candidates.
 - No forensic validation or accuracy claim. A seeded development case shows how the editor works; it does not measure performance on unseen source groups.
 
-Preserve the applicable notices when redistributing this package; additional scans or screenshots need their own provenance and rights review. The native Linux fresh-workspace, prediction, and restart checks passed. A complete Docker build of this expanded package and Windows runtime execution have not yet been verified. On either host, the cases should open, **Run new estimate** should reproduce the baseline masks without fitting, and inference should leave saved revisions and arrows unchanged. A restart should retain the workspace.
+Preserve the applicable notices when redistributing this package; additional scans or screenshots need their own provenance and rights review. Native Linux workspace checks passed, and Windows Docker Desktop execution was confirmed by the user. On either host, the cases should open, **Run new estimate** should reproduce the baseline masks and propose an arrow without refitting, and saved revisions should remain unchanged until saved or approved. A restart should retain the workspace.

@@ -4,11 +4,11 @@
 
 Use this guide after opening the local app, normally at [localhost:8787](http://localhost:8787/). A fresh starter workspace has 48 scans and a fitted model; **you do not need to retrain to try an estimate**.
 
-> **Read the state, not just the colors.** A saved label, an unsaved estimate, and an approved training revision are different things. Approval is a workflow decision, not forensic certification. These screenshots explain the interface; they do not validate mask boundaries or demonstrate independent model accuracy. The separate [sample-output deliverable remains deferred](../README.md#sample-outputs--deferred).
+> **Read the state, not just the colors.** A saved label, an unsaved estimate, and an approved training revision are different things. Approval is a workflow decision, not forensic certification. These screenshots explain the interface; they do not validate mask boundaries or demonstrate independent model accuracy. See the separate [actual sample outputs](sample-outputs.md) for original-versus-prediction comparisons.
 
 **Jump to:** [Find a case](#find-a-case) · [Inspect and edit](#inspect-and-edit) · [Run new estimate](#run-new-estimate-button) · [Save and compare](#save-approve-and-compare) · [Training](#review-training-changes) · [Add scan](#add-a-scan-safely) · [Export and persistence](#export-persistence-and-reset)
 
-Figures are real app captures; most have numbered outlines added. The estimate-button close-up is an unannotated crop. Open a figure for its full-resolution version. [Image credits and modifications](#screenshot-credits) apply to every figure.
+Figures are real app captures; most have numbered outlines added. The estimate-button close-up is an unannotated crop. They predate automatic arrows; current estimates also propose a best-effort arrow rather than retaining the manual arrow shown in the older captures. Open a figure for its full-resolution version. [Image credits and modifications](#screenshot-credits) apply to every figure.
 
 ## Find a case
 
@@ -71,7 +71,7 @@ Click this button to run the **already fitted model** on the open scan. It does 
 1. Locate **Revisions** below **Training eligibility** in the right **Inspector**, then find **Run new estimate** (Figure 2; also Figure 4, callout 1). If it is below the viewport, scroll **inside the Inspector panel**, not the scan viewer.
 2. Start from the **latest saved revision**, in editable view, with no unsaved edits. The button is disabled while edits are unsaved or a read-only comparison is open. Save or **Cancel edits** first; when comparing, return with **View latest** or **Back to unsaved edits**, then resolve any retained edits.
 3. Click **Run new estimate**. It runs the **already fitted local CPU model** against this scan and the open base revision: **this is inference, not retraining**. The result stays in the browser's edit buffer; no saved revision is created until you choose **Save draft** or **Approve**.
-4. Check the **Unsaved estimate from Run #…** notice (callout 2). Only emitted Present predictions replace those targets in the edit buffer. Targets the model does not predict are preserved—not erased or marked Absent. In particular, this mask-only model does not generate or change the arrow.
+4. Check the **Unsaved estimate from Run #…** notice (callout 2). Emitted Present predictions replace those targets in the edit buffer. Unpredicted mask targets are preserved—not erased or marked Absent. Every successful estimate also proposes a best-effort arrow, using learned fallback geometry when support is weak; it can replace an existing arrow in the unsaved buffer. Correct it or mark it Indeterminate if unsupported. Saved annotations remain unchanged until you save or approve.
 5. Inspect Original/overlays and correct the result, then save a draft or approve deliberately (callout 3). To undo the estimate as a whole, choose **Cancel edits** and confirm: this discards the unsaved session and returns to saved labels. **Undo** is for brush/eraser strokes, not for undoing an estimate. The heading can still show the base revision's Approved badge while the estimate is unsaved; use the notice and bottom state to distinguish them.
 
 The bundled artifact is called **Run #3** in the project history but appears as **Run #1** in a fresh workspace. This is the same fitted baseline, not a new fit.
@@ -99,7 +99,7 @@ The bundled artifact is called **Run #3** in the project history but appears as 
 2. Open **Training changes**, then **Refresh preview**. Inspect **Added**, **Corrected**, **Excluded**, **Unchanged**, and **Total in snapshot**. Change rows link back to their cases. Drafts, unsaved estimates, and held-out cases do not enter the snapshot.
 3. Only when the reviewed inputs are ready, choose **Confirm & retrain**. This submits the displayed snapshot fingerprint. If inputs changed meanwhile, review the refreshed preview and confirm again. Watch **Training runs** for success or an error; submission is not completion.
 
-**Model limits:** four mask regions are learned, not arrows. The current scope is 9×19 mm reflectance microscopy; different framing, instruments, lighting, or calibers can break spatial assumptions. Reduced-grid fitting can miss tiny/thin marks or shift boundaries. No emitted mask is an abstention, not verified absence. Starter scans used in fitting cannot establish generalization. See [methodology and edge cases](../README.md#assumptions-and-edge-cases) and the [estimator details](../python/README.md#what-the-worker-does).
+**Model limits:** four mask regions and a compact ordered-arrow prior are learned. Arrow geometry is best effort, not a verified impact point or direction; weak annotations limit both masks and arrows. The current scope is 9×19 mm reflectance microscopy; different framing, instruments, lighting, or calibers can break spatial assumptions. Reduced-grid fitting can miss tiny/thin marks or shift boundaries. An un-emitted mask is an abstention, not verified absence. Starter scans used in fitting cannot establish generalization. See [methodology and edge cases](../README.md#assumptions-and-edge-cases) and the [estimator details](../python/README.md#what-the-worker-does).
 
 ## Add a scan safely
 

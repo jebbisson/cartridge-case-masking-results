@@ -1,0 +1,7 @@
+# Keep pinned text bytes and Linux-container sources stable on Windows.
+* text=auto eol=lf
+
+# Opaque assets must never be normalized, regardless of content heuristics.
+*.png binary
+*.sqlite binary
+*.sqlite.part-* binary

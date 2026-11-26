@@ -1,6 +1,10 @@
 # Cartridge Case Masking Workbench
 
-A local browser workbench for reviewing pixel masks on fired cartridge-case microscopy PNGs. Compare an estimate with the original scan, correct masks at native resolution, and save revisions without changing the original. The CPU estimator uses the Run #3 mask-only baseline. Drag-direction arrows can be edited by hand; the estimator does not create or change them.
+I’m not a machine-learning or ballistics specialist, so my focus was to build a tool that helps domain experts improve the data and algorithms over time. Through the web interface, experts can inspect scans, correct masks, curate training examples, and retrain the estimator as their annotations and methods improve.
+
+Docker packages the application and its dependencies to simplify deployment on supported machines. The default setup runs locally; hosting it on a network would require appropriate authentication, HTTPS, and access controls.
+
+The bundled CPU estimator uses the Run #3 mask-only baseline. Drag-direction arrows can be edited by hand; the estimator does not create or change them.
 
 **Release status:** Research/development release with 48 real scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
 

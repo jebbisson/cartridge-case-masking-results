@@ -1,0 +1,2392 @@
+{
+  "behavior_summary": {
+    "40sw_development_pilot": {
+      "arrow_indeterminate_count": 6,
+      "groups": 3,
+      "in_process_seconds_median": 0.4724015542306006,
+      "in_process_seconds_range": [
+        0.43929637037217617,
+        0.4929610313847661
+      ],
+      "scans": 6,
+      "targets": {
+        "aperture_shear": {
+          "area_fraction_median": 0.0,
+          "area_fraction_range": [
+            0.0,
+            0.000837691472336534
+          ],
+          "emissions": 1,
+          "prior_only_emissions": 0,
+          "unguided_emissions": 5
+        },
+        "breech_face": {
+          "area_fraction_median": 0.2143141646662094,
+          "area_fraction_range": [
+            0.1943061191764467,
+            0.2240728436341005
+          ],
+          "emissions": 6,
+          "prior_only_emissions": 6,
+          "unguided_emissions": 6
+        },
+        "firing_pin_impression": {
+          "area_fraction_median": 0.0032066853376009753,
+          "area_fraction_range": [
+            0.0,
+            0.007054191751765483
+          ],
+          "emissions": 5,
+          "prior_only_emissions": 0,
+          "unguided_emissions": 6
+        },
+        "firing_pin_shear": {
+          "area_fraction_median": 0.055729801732459484,
+          "area_fraction_range": [
+            0.05173027644413961,
+            0.05666275307371844
+          ],
+          "emissions": 6,
+          "prior_only_emissions": 6,
+          "unguided_emissions": 6
+        }
+      }
+    },
+    "9mm_in_sample_pipeline_controls": {
+      "arrow_indeterminate_count": 6,
+      "groups": 3,
+      "in_process_seconds_median": 0.46917276876047254,
+      "in_process_seconds_range": [
+        0.43627312406897545,
+        0.576355972327292
+      ],
+      "scans": 6,
+      "targets": {
+        "aperture_shear": {
+          "area_fraction_median": 0.00698026612432048,
+          "area_fraction_range": [
+            0.0,
+            0.0137771570009653
+          ],
+          "emissions": 5,
+          "prior_only_emissions": 0,
+          "unguided_emissions": 6
+        },
+        "breech_face": {
+          "area_fraction_median": 0.15655651847406393,
+          "area_fraction_range": [
+            0.12431591506630087,
+            0.23339164031143628
+          ],
+          "emissions": 6,
+          "prior_only_emissions": 6,
+          "unguided_emissions": 6
+        },
+        "firing_pin_impression": {
+          "area_fraction_median": 0.0017645898427577098,
+          "area_fraction_range": [
+            0.0,
+            0.003007234987044658
+          ],
+          "emissions": 5,
+          "prior_only_emissions": 0,
+          "unguided_emissions": 5
+        },
+        "firing_pin_shear": {
+          "area_fraction_median": 0.04480766238632322,
+          "area_fraction_range": [
+            0.031222215871564294,
+            0.09248383757557282
+          ],
+          "emissions": 6,
+          "prior_only_emissions": 6,
+          "unguided_emissions": 6
+        }
+      }
+    }
+  },
+  "checkpoint_sha256": "a4056cde70e06dc75314ca295f9dafa58e479c5b4b220176e708559a5e225a21",
+  "coarse_reference_agreement": {
+    "aggregation": "Per-scan IoU/Dice, mean within each slide, equal mean over the three related slides",
+    "class_crosswalk": {
+      "BreechFace": "breech_face coarse annulus",
+      "FiringPin": "firing_pin_shear center pocket; NOT exterior firing_pin_impression"
+    },
+    "comparison_count": 36,
+    "group_macro": [
+      {
+        "group_iou_max": 0.711698348590245,
+        "group_iou_min": 0.6595809196855305,
+        "group_macro_dice": 0.8190765745231717,
+        "group_macro_iou": 0.6941784548212975,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 6411810,
+        "sum_prediction_pixels": 6412316,
+        "sum_reference_pixels": 9238173,
+        "sum_union_pixels": 9238679,
+        "target": "breech_face",
+        "variant": "production"
+      },
+      {
+        "group_iou_max": 0.7139281411299709,
+        "group_iou_min": 0.6589878877592165,
+        "group_macro_dice": 0.8198649253115908,
+        "group_macro_iou": 0.6953390274489187,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 6423327,
+        "sum_prediction_pixels": 6424659,
+        "sum_reference_pixels": 9238173,
+        "sum_union_pixels": 9239505,
+        "target": "breech_face",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_iou_max": 0.5220642770917954,
+        "group_iou_min": 0.4928906332808851,
+        "group_macro_dice": 0.6761247969607119,
+        "group_macro_iou": 0.5109309384552218,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 4744407,
+        "sum_prediction_pixels": 4799820,
+        "sum_reference_pixels": 9238173,
+        "sum_union_pixels": 9293586,
+        "target": "breech_face",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_iou_max": 0.8446190893381617,
+        "group_iou_min": 0.8285319255714424,
+        "group_macro_dice": 0.9123801374580459,
+        "group_macro_iou": 0.8389859784980636,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 1544129,
+        "sum_prediction_pixels": 1665308,
+        "sum_reference_pixels": 1720155,
+        "sum_union_pixels": 1841334,
+        "target": "firing_pin_shear",
+        "variant": "production"
+      },
+      {
+        "group_iou_max": 0.8359319205786926,
+        "group_iou_min": 0.8177087759827814,
+        "group_macro_dice": 0.9054649637869265,
+        "group_macro_iou": 0.8273410162588468,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 1527184,
+        "sum_prediction_pixels": 1653569,
+        "sum_reference_pixels": 1720155,
+        "sum_union_pixels": 1846540,
+        "target": "firing_pin_shear",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_iou_max": 0.7633615928037081,
+        "group_iou_min": 0.5031170923113074,
+        "group_macro_dice": 0.7634618619024264,
+        "group_macro_iou": 0.6253626060254148,
+        "groups": 3,
+        "scans": 6,
+        "sum_intersection_pixels": 1231192,
+        "sum_prediction_pixels": 1504902,
+        "sum_reference_pixels": 1720155,
+        "sum_union_pixels": 1993865,
+        "target": "firing_pin_shear",
+        "variant": "prior_only_0.5"
+      }
+    ],
+    "mapping": "Full-frame nearest-neighbor 512x512 to 2592x1944; predeclared; no fitted registration",
+    "parent_independently_recomputed": {
+      "all_denominators_and_scores_match": true,
+      "group_macro_aggregates_match": true,
+      "native_comparisons_recomputed": 36
+    },
+    "per_input_variant": [
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8422860435396515,
+        "dice_denominator_pixels": 2596346,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 1093433,
+        "iou": 0.7275424459033889,
+        "prediction_pixels": 1093433,
+        "prediction_sha256": "3542b8ba30798233c5264ef097c31258f3d445d200c6a7dba178972fe8f81213",
+        "reference_pixels": 1502913,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "4c7de15b79317422fee13df2bd354027e4437717486de61fbdfc89dbdd4aae7d",
+        "target": "breech_face",
+        "union_pixels": 1502913,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8428525067398311,
+        "dice_denominator_pixels": 2597617,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 1094704,
+        "iou": 0.7283881369047975,
+        "prediction_pixels": 1094704,
+        "prediction_sha256": "5524beb37ed2fc7acbc98123d162aabd66c5f740b8dccb3a580dc5490e16a99e",
+        "reference_pixels": 1502913,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "4c7de15b79317422fee13df2bd354027e4437717486de61fbdfc89dbdd4aae7d",
+        "target": "breech_face",
+        "union_pixels": 1502913,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6947552263836243,
+        "dice_denominator_pixels": 2302883,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 799970,
+        "iou": 0.5322796462602959,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1502913,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "4c7de15b79317422fee13df2bd354027e4437717486de61fbdfc89dbdd4aae7d",
+        "target": "breech_face",
+        "union_pixels": 1502913,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9168576603291636,
+        "dice_denominator_pixels": 544957,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 249824,
+        "iou": 0.8464793838710005,
+        "prediction_pixels": 273002,
+        "prediction_sha256": "366085b227f065004aefb49e37218807ec5c3e68e3cb675cee6d2e5f2fa78220",
+        "reference_pixels": 271955,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "be0993f633ab2d2c48f11f60f620e7b3573d1640c92cb0696340065a18a1c22f",
+        "target": "firing_pin_shear",
+        "union_pixels": 295133,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9121066375532967,
+        "dice_denominator_pixels": 542248,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 247294,
+        "iou": 0.8384154817361351,
+        "prediction_pixels": 270293,
+        "prediction_sha256": "23d7e221070b034d0dfb98e6c4caa80bc4873e90e9390a7fae85b409e80da4e4",
+        "reference_pixels": 271955,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "be0993f633ab2d2c48f11f60f620e7b3573d1640c92cb0696340065a18a1c22f",
+        "target": "firing_pin_shear",
+        "union_pixels": 294954,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annular contour is frame-compatible; rounded pocket trace omits right-hand lateral wedge and simplifies irregular pocket/rim transition. No gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9100831720138033,
+        "dice_denominator_pixels": 522772,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+        "intersection_pixels": 237883,
+        "iou": 0.8350024044452401,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 271955,
+        "sample": "40sw-01",
+        "source_filename": "Lightstone SW 1-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "be0993f633ab2d2c48f11f60f620e7b3573d1640c92cb0696340065a18a1c22f",
+        "target": "firing_pin_shear",
+        "union_pixels": 284889,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8206533677679817,
+        "dice_denominator_pixels": 2694960,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 1105814,
+        "iou": 0.695854251277101,
+        "prediction_pixels": 1105814,
+        "prediction_sha256": "816299a2d07432e09465262ddf0c5f8349478ff77c2b0c56a5115edc34de2b25",
+        "reference_pixels": 1589146,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "5e3982650d85ead862821d3b9fe991c854975ad1783959e8f981c6d1487a847f",
+        "target": "breech_face",
+        "union_pixels": 1589146,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8231612310791196,
+        "dice_denominator_pixels": 2700720,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 1111564,
+        "iou": 0.6994681453551445,
+        "prediction_pixels": 1111574,
+        "prediction_sha256": "14cf0c76faacb879c75c69ee9ee25f87b58d41b669a6dc1604617c7fa0e95f2d",
+        "reference_pixels": 1589146,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "5e3982650d85ead862821d3b9fe991c854975ad1783959e8f981c6d1487a847f",
+        "target": "breech_face",
+        "union_pixels": 1589156,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6696786593869867,
+        "dice_denominator_pixels": 2389116,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 799970,
+        "iou": 0.5033961637256741,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1589146,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "5e3982650d85ead862821d3b9fe991c854975ad1783959e8f981c6d1487a847f",
+        "target": "breech_face",
+        "union_pixels": 1589146,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9146707612315106,
+        "dice_denominator_pixels": 598517,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 273723,
+        "iou": 0.8427587948053228,
+        "prediction_pixels": 283494,
+        "prediction_sha256": "762e4c519b90bbb3a7fbf8626db00d7f1ce338370f59e021be59435361382217",
+        "reference_pixels": 315023,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "d8a18e164bdce3d08abdd4ed0d11b4b367c530106fa79a457c6bc2fd78416733",
+        "target": "firing_pin_shear",
+        "union_pixels": 324794,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9091593500722737,
+        "dice_denominator_pixels": 597728,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 271715,
+        "iou": 0.8334483594212501,
+        "prediction_pixels": 282705,
+        "prediction_sha256": "aa1b88d49d012928a42da24f9a9866848cd5a5de91c787b173b6a6b243c24298",
+        "reference_pixels": 315023,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "d8a18e164bdce3d08abdd4ed0d11b4b367c530106fa79a457c6bc2fd78416733",
+        "target": "firing_pin_shear",
+        "union_pixels": 326013,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer rim follows primer field coarsely; central rounded contour cuts off long right-hand extension and smooths noncircular pocket perimeter. Local dark/bright collar ambiguity, no gross frame displacement.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.8177718082850276,
+        "dice_denominator_pixels": 565840,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 01",
+        "image_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+        "intersection_pixels": 231364,
+        "iou": 0.6917207811621761,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 315023,
+        "sample": "40sw-02",
+        "source_filename": "Lightstone SW 1-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "d8a18e164bdce3d08abdd4ed0d11b4b367c530106fa79a457c6bc2fd78416733",
+        "target": "firing_pin_shear",
+        "union_pixels": 334476,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.7967305663052247,
+        "dice_denominator_pixels": 2607057,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 1038561,
+        "iou": 0.6621381246748478,
+        "prediction_pixels": 1038561,
+        "prediction_sha256": "1b115bf687132576f2e0ff34c13ee0d4035b1f0565f191bc66e5b235dd32ef20",
+        "reference_pixels": 1568496,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "3acc6003f050297367a123b92af1df439ca55fe9d76bdacfadf8639f80f210df",
+        "target": "breech_face",
+        "union_pixels": 1568496,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.7967993323120612,
+        "dice_denominator_pixels": 2607206,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 1038710,
+        "iou": 0.6622331201354673,
+        "prediction_pixels": 1038710,
+        "prediction_sha256": "0c4c76001be52e14f115c3c6b778586f070389d5424ebd46bb98bc9b76e0a913",
+        "reference_pixels": 1568496,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "3acc6003f050297367a123b92af1df439ca55fe9d76bdacfadf8639f80f210df",
+        "target": "breech_face",
+        "union_pixels": 1568496,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6731226034065931,
+        "dice_denominator_pixels": 2368466,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 797134,
+        "iou": 0.5072982666934804,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1568496,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "3acc6003f050297367a123b92af1df439ca55fe9d76bdacfadf8639f80f210df",
+        "target": "breech_face",
+        "union_pixels": 1571332,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9197510204378606,
+        "dice_denominator_pixels": 549764,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 252823,
+        "iou": 0.8514250305616268,
+        "prediction_pixels": 278134,
+        "prediction_sha256": "09b9548aeabde6af49a029a3ef0dde4a5e229e9437378723c21e41000e9a09bc",
+        "reference_pixels": 271630,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "c85a05ded0d6411b11de4a9355701cc5d5bcbf8f0e469af516087c25b7dee5c8",
+        "target": "firing_pin_shear",
+        "union_pixels": 296941,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9100712285266942,
+        "dice_denominator_pixels": 544164,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 247614,
+        "iou": 0.8349822964087,
+        "prediction_pixels": 272534,
+        "prediction_sha256": "ee204baad2ed6050fa6eb8049b06a4eb1652edcd2252a012c5642b09281e6326",
+        "reference_pixels": 271630,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "c85a05ded0d6411b11de4a9355701cc5d5bcbf8f0e469af516087c25b7dee5c8",
+        "target": "firing_pin_shear",
+        "union_pixels": 296550,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Outer annulus and center pocket are frame-compatible. Pocket contour is rounded relative to textured rim and excludes right-hand lobe; small local edge disagreement is not a registration fit target.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.7714772981757001,
+        "dice_denominator_pixels": 522447,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+        "intersection_pixels": 201528,
+        "iou": 0.6279715442214391,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 271630,
+        "sample": "40sw-03",
+        "source_filename": "Lightstone SW 2-2 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "c85a05ded0d6411b11de4a9355701cc5d5bcbf8f0e469af516087c25b7dee5c8",
+        "target": "firing_pin_shear",
+        "union_pixels": 320919,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.7930166706354799,
+        "dice_denominator_pixels": 2469252,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 979079,
+        "iou": 0.6570237146962131,
+        "prediction_pixels": 979079,
+        "prediction_sha256": "fe86e2769ced65da6cc66185b8186a0fa864a56a16fc069c690cb86419257c4b",
+        "reference_pixels": 1490173,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "132589a8fff45fcc0c015f12309ad560ea9b43b8581d0c2919d6df53bc9fbad0",
+        "target": "breech_face",
+        "union_pixels": 1490173,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.7920828194539632,
+        "dice_denominator_pixels": 2467343,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 977170,
+        "iou": 0.6557426553829656,
+        "prediction_pixels": 977170,
+        "prediction_sha256": "07fefb395a0264390a0c144e35130300b2c7e9b1ed88f59f7789453cb904fcf9",
+        "reference_pixels": 1490173,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "132589a8fff45fcc0c015f12309ad560ea9b43b8581d0c2919d6df53bc9fbad0",
+        "target": "breech_face",
+        "union_pixels": 1490173,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6986201298346871,
+        "dice_denominator_pixels": 2290143,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 799970,
+        "iou": 0.5368302874901102,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1490173,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "132589a8fff45fcc0c015f12309ad560ea9b43b8581d0c2919d6df53bc9fbad0",
+        "target": "breech_face",
+        "union_pixels": 1490173,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.910787393733081,
+        "dice_denominator_pixels": 552265,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 251498,
+        "iou": 0.8361888106075467,
+        "prediction_pixels": 260661,
+        "prediction_sha256": "349a8e26670bed1b1d603119d6378405c01dcdf260993872e909a1d64218c0a7",
+        "reference_pixels": 291604,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "bbbdf267f981ca3a3cba5ad88342382ed6e6ad114101db0737d9539b82eb8459",
+        "target": "firing_pin_shear",
+        "union_pixels": 300767,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9021740515256582,
+        "dice_denominator_pixels": 549435,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 247843,
+        "iou": 0.8217824080214329,
+        "prediction_pixels": 257831,
+        "prediction_sha256": "c824f135a5cbd90b1c644c5a100e62403f0e77d5d6f006d892245ed52bee3c55",
+        "reference_pixels": 291604,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "bbbdf267f981ca3a3cba5ad88342382ed6e6ad114101db0737d9539b82eb8459",
+        "target": "firing_pin_shear",
+        "union_pixels": 301592,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Smooth circular pocket contour omits upper scratch/protrusion and right-hand extension, and mixes some collar transition along lower edge; exact forensic boundary unsupported.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.7431238834779627,
+        "dice_denominator_pixels": 542421,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 02",
+        "image_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+        "intersection_pixels": 201543,
+        "iou": 0.5912467217010191,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 291604,
+        "sample": "40sw-04",
+        "source_filename": "Lightstone SW 2-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "bbbdf267f981ca3a3cba5ad88342382ed6e6ad114101db0737d9539b82eb8459",
+        "target": "firing_pin_shear",
+        "union_pixels": 340878,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8097683904712305,
+        "dice_denominator_pixels": 2632491,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 1065854,
+        "iou": 0.6803452235584887,
+        "prediction_pixels": 1066360,
+        "prediction_sha256": "aa8e1b6e3e8424fe9ffed9db7248bc92453f8300b65720c7ab3a6f155da4deeb",
+        "reference_pixels": 1566131,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "488498a0dcaf55adb8dc1b4e297fddb318b0d5aa63b06619db2b496f71de2312",
+        "target": "breech_face",
+        "union_pixels": 1566637,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.811088486483186,
+        "dice_denominator_pixels": 2636753,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 1069320,
+        "iou": 0.6822109780768939,
+        "prediction_pixels": 1070622,
+        "prediction_sha256": "0336213b0b250d564355a2091cb8476db230d7a8c11a703cc8e636d691a18407",
+        "reference_pixels": 1566131,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "488498a0dcaf55adb8dc1b4e297fddb318b0d5aa63b06619db2b496f71de2312",
+        "target": "breech_face",
+        "union_pixels": 1567433,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6538359943214597,
+        "dice_denominator_pixels": 2366101,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 773521,
+        "iou": 0.4857030730010423,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1566131,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "488498a0dcaf55adb8dc1b4e297fddb318b0d5aa63b06619db2b496f71de2312",
+        "target": "breech_face",
+        "union_pixels": 1592580,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9175343780270316,
+        "dice_denominator_pixels": 552315,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 253384,
+        "iou": 0.8476337348752723,
+        "prediction_pixels": 285515,
+        "prediction_sha256": "9217141c9fba7ecbfaa8f1f4a953b807edb3265aa77c2cad0038ca63cdbaef04",
+        "reference_pixels": 266800,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "21f9e3cda19f4300ec7a73ac16935a57ed530b53fdd453c40cce88f0d5d27452",
+        "target": "firing_pin_shear",
+        "union_pixels": 298931,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.9086919965213249,
+        "dice_denominator_pixels": 554234,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 251814,
+        "iou": 0.8326631836518749,
+        "prediction_pixels": 287434,
+        "prediction_sha256": "34b84193745e8ba7603a079b30b6a278b06f72e27c08e2398e5094a43520ff80",
+        "reference_pixels": 266800,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "21f9e3cda19f4300ec7a73ac16935a57ed530b53fdd453c40cce88f0d5d27452",
+        "target": "firing_pin_shear",
+        "union_pixels": 302420,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour simplifies left/top irregularity and excludes right-hand wedge; outer contour follows coarse primer rim, not independently verified impression limit.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.6500559293840813,
+        "dice_denominator_pixels": 517617,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+        "intersection_pixels": 168240,
+        "iou": 0.4815428605775423,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 266800,
+        "sample": "40sw-05",
+        "source_filename": "Lightstone SW 3-3 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "21f9e3cda19f4300ec7a73ac16935a57ed530b53fdd453c40cce88f0d5d27452",
+        "target": "firing_pin_shear",
+        "union_pixels": 349377,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8520044084194623,
+        "dice_denominator_pixels": 2650383,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 1129069,
+        "iou": 0.7421669688177457,
+        "prediction_pixels": 1129069,
+        "prediction_sha256": "8ff59ebd2c4e38c9cd353a5d0b1f1dfc7ca21c3332c20d0459639dbb0cd8ab3c",
+        "reference_pixels": 1521314,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "22c31d9e5e817269e9c225c0dc5965b0419d11506a6e058bf088b27a0881c2af",
+        "target": "breech_face",
+        "union_pixels": 1521314,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.8532051758013834,
+        "dice_denominator_pixels": 2653193,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 1131859,
+        "iou": 0.7439911288382433,
+        "prediction_pixels": 1131879,
+        "prediction_sha256": "da90e468a70622c8966f21feeb7c64c31e9879a366147d129b241c2511db743c",
+        "reference_pixels": 1521314,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "22c31d9e5e817269e9c225c0dc5965b0419d11506a6e058bf088b27a0881c2af",
+        "target": "breech_face",
+        "union_pixels": 1521334,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "BreechFace annulus",
+        "dice": 0.6667361684309201,
+        "dice_denominator_pixels": 2321284,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 773842,
+        "iou": 0.5000781935607279,
+        "prediction_pixels": 799970,
+        "prediction_sha256": "760cd8a52806acfd52d589fc1df9c597a19a1bc018cd894e76292e3a37ca9642",
+        "reference_pixels": 1521314,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "BreechFace",
+        "source_sha256": "22c31d9e5e817269e9c225c0dc5965b0419d11506a6e058bf088b27a0881c2af",
+        "target": "breech_face",
+        "union_pixels": 1547442,
+        "variant": "prior_only_0.5"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.8946796109896281,
+        "dice_denominator_pixels": 587645,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 262877,
+        "iou": 0.8094301162676125,
+        "prediction_pixels": 284502,
+        "prediction_sha256": "df17b950ece50d4e6a81cae2c3f9b807a509d85ed47fe7d546f65b886318918c",
+        "reference_pixels": 303143,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "4ee81dc9244a6182d105aab2ef1c693978d2ad154294b4f9db08d8227192c6db",
+        "target": "firing_pin_shear",
+        "union_pixels": 324768,
+        "variant": "production"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.8905865185223113,
+        "dice_denominator_pixels": 585915,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 260904,
+        "iou": 0.8027543683136878,
+        "prediction_pixels": 282772,
+        "prediction_sha256": "dd8783a6bcf76b273a4c1e118b79e32d89075fe1165d0bcd984d8d49d26c4d14",
+        "reference_pixels": 303143,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "4ee81dc9244a6182d105aab2ef1c693978d2ad154294b4f9db08d8227192c6db",
+        "target": "firing_pin_shear",
+        "union_pixels": 325011,
+        "variant": "unguided_classifier"
+      },
+      {
+        "alignment": "fullframe_nearest_512x512_to_2592x1944_no_fit",
+        "alignment_limitations": "Frame-compatible annulus/pocket. Rounded central contour clips some irregular dark left boundary and includes part of bright lower/right transition; right extension is outside source FiringPin. No global shift established.",
+        "class_compatibility": "FiringPin central-pocket coarse proxy; NOT exterior scrape",
+        "dice": 0.688259080077984,
+        "dice_denominator_pixels": 553960,
+        "evaluation_scope": "exploratory_coarse_source_agreement_not_project_gold_accuracy",
+        "frame_pixels": 5038848,
+        "group_name": "Lightstone 03",
+        "image_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+        "intersection_pixels": 190634,
+        "iou": 0.5246913240450725,
+        "prediction_pixels": 250817,
+        "prediction_sha256": "a60b5494993196b1def022de22e9d6d9bfc7f3629bcebb7096b2554397436383",
+        "reference_pixels": 303143,
+        "sample": "40sw-06",
+        "source_filename": "Lightstone SW 3-1 BF R.png",
+        "source_region": "FiringPin",
+        "source_sha256": "4ee81dc9244a6182d105aab2ef1c693978d2ad154294b4f9db08d8227192c6db",
+        "target": "firing_pin_shear",
+        "union_pixels": 363326,
+        "variant": "prior_only_0.5"
+      }
+    ],
+    "per_slide": [
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.6822169428853055,
+        "mean_iou": 0.517837904992985,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.8314697056538166,
+        "mean_iou": 0.711698348590245,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.8330068689094754,
+        "mean_iou": 0.7139281411299709,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.8639274901494154,
+        "mean_iou": 0.7633615928037081,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.9157642107803371,
+        "mean_iou": 0.8446190893381617,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 01",
+        "mean_dice": 0.9106329938127852,
+        "mean_iou": 0.8359319205786926,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.6858713666206402,
+        "mean_iou": 0.5220642770917954,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.7948736184703522,
+        "mean_iou": 0.6595809196855305,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.7944410758830123,
+        "mean_iou": 0.6589878877592165,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.7573005908268313,
+        "mean_iou": 0.6096091329612291,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.9152692070854709,
+        "mean_iou": 0.8438069205845867,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 02",
+        "mean_dice": 0.9061226400261762,
+        "mean_iou": 0.8283823522150664,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.6602860813761899,
+        "mean_iou": 0.4928906332808851,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.8308863994453464,
+        "mean_iou": 0.7112560961881171,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.8321468311422847,
+        "mean_iou": 0.7131010534575686,
+        "scans": 2,
+        "target": "breech_face",
+        "variant": "unguided_classifier"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.6691575047310326,
+        "mean_iou": 0.5031170923113074,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "prior_only_0.5"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.9061069945083299,
+        "mean_iou": 0.8285319255714424,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "production"
+      },
+      {
+        "group_name": "Lightstone 03",
+        "mean_dice": 0.8996392575218182,
+        "mean_iou": 0.8177087759827814,
+        "scans": 2,
+        "target": "firing_pin_shear",
+        "variant": "unguided_classifier"
+      }
+    ],
+    "scope": "Exploratory coarse source-mask agreement, not four-region-plus-arrow forensic accuracy",
+    "scored_case_target_references": 12,
+    "source": "https://doi.org/10.15132/10000262",
+    "source_archive_sha256": "467226575d2715620a354a59a74ed6f757ba5bddb795e2b28caf72f09f83930b",
+    "unscored": [
+      "aperture_shear",
+      "firing_pin_impression",
+      "firing_pin_drag_direction"
+    ]
+  },
+  "cohort": {
+    "additional_caliber": ".40 S&W",
+    "distinct_cartridge_specimens": 6,
+    "scans": 6,
+    "shared_frame": true,
+    "slide_groups": 3,
+    "source_studies": 1,
+    "split": "development pilot, not official blind test",
+    "training_eligible": false
+  },
+  "inference_code_sha256": {
+    "multiscale_inference_v1.py": "104d4845f0e4fcf0655a25431a0db18f34060e98fd7152afa2c1f1fd4ce0cfc0",
+    "multiscale_training.py": "6c611a41f81a19ac61e62fcc128846ab24c416d422e1f95fed9538b511e882ed",
+    "multiscale_worker.py": "ef4afd0d5a16225d374a90e77d515c88c5c9da3352aedb30d136f39dbd81a391",
+    "review_worker.py": "d8b00d98c9df85b55cd5a5a4175f34291ea95e53cb5113de4cb0d9bd074b630a"
+  },
+  "limits": [
+    "Source image and mask assets remain private; no new data, fitted checkpoint or source workspace history is distributed.",
+    "Emission, mask geometry and diagnostic-control agreement are not accuracy or recall.",
+    "9mm controls were training cases; their results are not independent performance evidence.",
+    "Three related slides share a frame and study; observations are not an isolated causal caliber effect.",
+    "Pooled, metadata-conditioned and specialist fits were not trained or compared.",
+    "Ground-truth coverage for the four regions plus directed arrow is not established."
+  ],
+  "new_caliber_per_input": [
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "342a787f680d3b0166ff1069b5ac9c58fd115d4749d4bb6f900d54a69cc2020c",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "0aa6bb74f19d30ee5c26bd7ede291165ecdcd7b1381db3ef8a72ff79ab9c8719",
+      "prediction_seconds_in_process": 0.4830873627215624,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-01",
+      "source_filename": "Lightstone SW 1-1 BF R.png",
+      "source_slide": "Lightstone 01",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": null,
+          "unguided_classifier": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.22260802469135801,
+              0.125,
+              0.777391975308642,
+              0.875
+            ],
+            "centroid_relative": [
+              0.49144659540577335,
+              0.4829957498717775
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.2170005921988518,
+            "foreground_pixels": 1093433
+          },
+          "production_vs_prior_iou": 0.6945538803557716,
+          "production_vs_unguided_iou": 0.986355103196851,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.21875,
+              0.125,
+              0.777391975308642,
+              0.875
+            ],
+            "centroid_relative": [
+              0.49146839001487114,
+              0.48296671018482884
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.21725283239343596,
+            "foreground_pixels": 1094704
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.6134259259259259,
+              0.43775720164609055,
+              0.683641975308642,
+              0.5987654320987654
+            ],
+            "centroid_relative": [
+              0.6517658410338447,
+              0.5169644426044058
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.004829079980185947,
+            "foreground_pixels": 24333
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.8462530910654769,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6095679012345679,
+              0.43775720164609055,
+              0.683641975308642,
+              0.6044238683127572
+            ],
+            "centroid_relative": [
+              0.6503200274272727,
+              0.5161386155926249
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0053946854519128186,
+            "foreground_pixels": 27183
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.3487654320987654,
+              0.6485339506172839,
+              0.6512345679012346
+            ],
+            "centroid_relative": [
+              0.5095117686584125,
+              0.504783574521515
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05417944736574709,
+            "foreground_pixels": 273002
+          },
+          "production_vs_prior_iou": 0.7624838074729564,
+          "production_vs_unguided_iou": 0.9681463824607671,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.3487654320987654,
+              0.65625,
+              0.661522633744856
+            ],
+            "centroid_relative": [
+              0.5104426972321258,
+              0.5040076746315183
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05364182448051618,
+            "foreground_pixels": 270293
+          }
+        }
+      }
+    },
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "0a3e08703a9c2ce724bfeda6e774ba4a964f356a8e04618fd461c76a12c0c74b",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "d0127e5f6eefec05e7af61df05e13b48d3c7d29971a15434dc22a4c2904b72fc",
+      "prediction_seconds_in_process": 0.48942677304148674,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-02",
+      "source_filename": "Lightstone SW 1-3 BF R.png",
+      "source_slide": "Lightstone 01",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": 0.0,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.7264660493827161,
+              0.588477366255144,
+              0.7303240740740741,
+              0.5936213991769548
+            ],
+            "centroid_relative": [
+              0.7282021604938271,
+              0.5907921810699589
+            ],
+            "emitted": true,
+            "foreground_fraction": 1.9845806025504242e-05,
+            "foreground_pixels": 100
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.21103395061728394,
+              0.125,
+              0.785108024691358,
+              0.875
+            ],
+            "centroid_relative": [
+              0.4808297061522212,
+              0.48252937349817815
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.21945770144286947,
+            "foreground_pixels": 1105814
+          },
+          "production_vs_prior_iou": 0.6253120296102987,
+          "production_vs_unguided_iou": 0.9792010496766621,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.21103395061728394,
+              0.125,
+              0.7889660493827161,
+              0.8801440329218106
+            ],
+            "centroid_relative": [
+              0.4805743406463534,
+              0.483006094013086
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.2206008198699385,
+            "foreground_pixels": 1111574
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.65625,
+              0.463477366255144,
+              0.722608024691358,
+              0.6044238683127572
+            ],
+            "centroid_relative": [
+              0.6806511661213532,
+              0.5175037927971642
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0027115324772646445,
+            "foreground_pixels": 13663
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.5954826461568418,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.652391975308642,
+              0.43775720164609055,
+              0.7264660493827161,
+              0.6095679012345679
+            ],
+            "centroid_relative": [
+              0.6830521999440624,
+              0.5138867357855887
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0037931289056546257,
+            "foreground_pixels": 19113
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.39853395061728397,
+              0.3647119341563786,
+              0.6485339506172839,
+              0.6718106995884774
+            ],
+            "centroid_relative": [
+              0.5304309900259608,
+              0.5203824470370774
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.056261669333943,
+            "foreground_pixels": 283494
+          },
+          "production_vs_prior_iou": 0.7192690602294886,
+          "production_vs_unguided_iou": 0.9508227787042269,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.39853395061728397,
+              0.35390946502057613,
+              0.722608024691358,
+              0.6820987654320988
+            ],
+            "centroid_relative": [
+              0.5319515639912564,
+              0.5200065970555036
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05610508592440177,
+            "foreground_pixels": 282705
+          }
+        }
+      }
+    },
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "1b50e46ff497f1c79bb1a5622687ad1ac4a473e2f9cd0ae1144639d9b093e773",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "c436e8d8c20dd89a86745be3ec3008fe60ba0886d88be1e92f86ff778aeb7469",
+      "prediction_seconds_in_process": 0.4929610313847661,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-03",
+      "source_filename": "Lightstone SW 2-2 BF R.png",
+      "source_slide": "Lightstone 02",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.59375,
+              0.3333333333333333,
+              0.6408179012345679,
+              0.375
+            ],
+            "centroid_relative": [
+              0.6165937837268682,
+              0.3559751214532862
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.000837691472336534,
+            "foreground_pixels": 4221
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.684005833738454,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.5740740740740741,
+              0.3281893004115226,
+              0.6446759259259259,
+              0.3801440329218107
+            ],
+            "centroid_relative": [
+              0.6154405262768305,
+              0.35572750679702553
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0012246846898338669,
+            "foreground_pixels": 6171
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.22260802469135801,
+              0.125,
+              0.785108024691358,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.4886253478979777,
+              0.46002176680258877
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.2061108015165371,
+            "foreground_pixels": 1038561
+          },
+          "production_vs_prior_iou": 0.6844246712518404,
+          "production_vs_unguided_iou": 0.9778974750581294,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.22260802469135801,
+              0.1198559670781893,
+              0.7889660493827161,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.487809720592411,
+              0.4586785576625137
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.20614037176751512,
+            "foreground_pixels": 1038710
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.6639660493827161,
+              0.43209876543209874,
+              0.691358024691358,
+              0.463477366255144
+            ],
+            "centroid_relative": [
+              0.6781278722798296,
+              0.4472413887342622
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0005677885103896763,
+            "foreground_pixels": 2861
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.5735612289052359,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6408179012345679,
+              0.4269547325102881,
+              0.7110339506172839,
+              0.6044238683127572
+            ],
+            "centroid_relative": [
+              0.678330545621929,
+              0.4610025874065866
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0008755969618452472,
+            "foreground_pixels": 4412
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.39467592592592593,
+              0.35390946502057613,
+              0.6446759259259259,
+              0.6512345679012346
+            ],
+            "centroid_relative": [
+              0.5244095416482347,
+              0.5027703676508949
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05519793413097597,
+            "foreground_pixels": 278134
+          },
+          "production_vs_prior_iou": 0.7043747522949969,
+          "production_vs_unguided_iou": 0.9475782065111673,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.39467592592592593,
+              0.3487654320987654,
+              0.714891975308642,
+              0.6563786008230452
+            ],
+            "centroid_relative": [
+              0.526204102509987,
+              0.5002477434687728
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05408656899354773,
+            "foreground_pixels": 272534
+          }
+        }
+      }
+    },
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "65be3d3affc7aa21bb9d0731501426d12cbfcbc4df847c02c0c06a7f012afa8d",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "66fa677fd689be849253e137689aa2c91b2a8cf7e9fb8eda746b071029d2e34f",
+      "prediction_seconds_in_process": 0.4602378774434328,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-04",
+      "source_filename": "Lightstone SW 2-3 BF R.png",
+      "source_slide": "Lightstone 02",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": 0.0,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.34375,
+              0.35390946502057613,
+              0.6797839506172839,
+              0.75
+            ],
+            "centroid_relative": [
+              0.49812656231366575,
+              0.45901923655083593
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.002116158296499517,
+            "foreground_pixels": 10663
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.24228395061728394,
+              0.1301440329218107,
+              0.7928240740740741,
+              0.8801440329218106
+            ],
+            "centroid_relative": [
+              0.5091165739075343,
+              0.4819437361593335
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1943061191764467,
+            "foreground_pixels": 979079
+          },
+          "production_vs_prior_iou": 0.7020304214011754,
+          "production_vs_unguided_iou": 0.9778250939498995,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.24228395061728394,
+              0.1301440329218107,
+              0.7928240740740741,
+              0.8801440329218106
+            ],
+            "centroid_relative": [
+              0.5098273412248548,
+              0.48191834341388384
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1939272627394198,
+            "foreground_pixels": 977170
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.6485339506172839,
+              0.4531893004115226,
+              0.7303240740740741,
+              0.625
+            ],
+            "centroid_relative": [
+              0.684344017494777,
+              0.5339043940706935
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.007054191751765483,
+            "foreground_pixels": 35545
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.8451210146902173,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6446759259259259,
+              0.4531893004115226,
+              0.7345679012345679,
+              0.6301440329218106
+            ],
+            "centroid_relative": [
+              0.6859895373089229,
+              0.5348222373780754
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.007727361492150587,
+            "foreground_pixels": 38937
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.4220679012345679,
+              0.3698559670781893,
+              0.652391975308642,
+              0.6718106995884774
+            ],
+            "centroid_relative": [
+              0.5454378779949797,
+              0.5290392529767193
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05173027644413961,
+            "foreground_pixels": 260661
+          },
+          "production_vs_prior_iou": 0.6065571710813553,
+          "production_vs_unguided_iou": 0.9635311537864357,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.4220679012345679,
+              0.3698559670781893,
+              0.65625,
+              0.6929012345679012
+            ],
+            "centroid_relative": [
+              0.5470489007274408,
+              0.5288425842729502
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05116864013361784,
+            "foreground_pixels": 257831
+          }
+        }
+      }
+    },
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "f1372250cf0bfce69a14f5683c86e4e119218e6c6db59426a51e85839621253a",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "eb732018156c109488dd7712c9cb625eee36b009fa93e02c543103da29ddc8cd",
+      "prediction_seconds_in_process": 0.43929637037217617,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-05",
+      "source_filename": "Lightstone SW 3-3 BF R.png",
+      "source_slide": "Lightstone 03",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": 0.0,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6134259259259259,
+              0.3281893004115226,
+              0.628858024691358,
+              0.3487654320987654
+            ],
+            "centroid_relative": [
+              0.6223269400352734,
+              0.33785273368606705
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0001389206421785297,
+            "foreground_pixels": 700
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.21875,
+              0.125,
+              0.785108024691358,
+              0.875
+            ],
+            "centroid_relative": [
+              0.49557622129151485,
+              0.49828217153712556
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.21162773713356703,
+            "foreground_pixels": 1066360
+          },
+          "production_vs_prior_iou": 0.581063462628354,
+          "production_vs_unguided_iou": 0.9728543297454839,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.21489197530864199,
+              0.1198559670781893,
+              0.785108024691358,
+              0.875
+            ],
+            "centroid_relative": [
+              0.4950521587012843,
+              0.49966027306014404
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.21247356538637402,
+            "foreground_pixels": 1070622
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": 0.0,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6408179012345679,
+              0.43209876543209874,
+              0.7110339506172839,
+              0.573045267489712
+            ],
+            "centroid_relative": [
+              0.6953700281952315,
+              0.47973794361451416
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0009845504369252656,
+            "foreground_pixels": 4961
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.39467592592592593,
+              0.31224279835390945,
+              0.6485339506172839,
+              0.625
+            ],
+            "centroid_relative": [
+              0.5196054541252401,
+              0.47039717558964456
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05666275307371844,
+            "foreground_pixels": 285515
+          },
+          "production_vs_prior_iou": 0.5470832744401785,
+          "production_vs_unguided_iou": 0.9533573121047338,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.39467592592592593,
+              0.2968106995884774,
+              0.7071759259259259,
+              0.625
+            ],
+            "centroid_relative": [
+              0.5207057798969116,
+              0.46652147355724327
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05704359409134786,
+            "foreground_pixels": 287434
+          }
+        }
+      }
+    },
+    {
+      "arrow_status": "indeterminate",
+      "decoded_rgb_sha256": "529a109a2c7794c2358485c3c80db931195ec9579de4e0b15c38e385f9942fee",
+      "dimensions": [
+        2592,
+        1944
+      ],
+      "input_png_sha256": "3c109d1529578e90d95eaaf8c063580d81fdc7b1de67ea3443458ba8a7e2deda",
+      "prediction_seconds_in_process": 0.4617157457396388,
+      "raw_firearm_caliber": "40/10 mm",
+      "raw_specimen_nominal_caliber": "40/10 mm",
+      "resolved_cartridge_designation": ".40 S&W",
+      "sample": "40sw-06",
+      "source_filename": "Lightstone SW 3-1 BF R.png",
+      "source_slide": "Lightstone 03",
+      "targets": {
+        "aperture_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production_vs_prior_iou": null,
+          "production_vs_unguided_iou": 0.0,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.6014660493827161,
+              0.30709876543209874,
+              0.6678240740740741,
+              0.4063786008230453
+            ],
+            "centroid_relative": [
+              0.64331572056274,
+              0.3639773523808834
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.0006769404435299498,
+            "foreground_pixels": 3411
+          }
+        },
+        "breech_face": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.24614197530864199,
+              0.15123456790123457,
+              0.7615740740740741,
+              0.8544238683127572
+            ],
+            "centroid_relative": [
+              0.5003158480711545,
+              0.4761855697932294
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.1587604944622263,
+            "foreground_pixels": 799970
+          },
+          "production": {
+            "bbox_relative": [
+              0.22646604938271606,
+              0.1301440329218107,
+              0.7928240740740741,
+              0.8698559670781894
+            ],
+            "centroid_relative": [
+              0.5030727480088506,
+              0.5084937814511054
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.2240728436341005,
+            "foreground_pixels": 1129069
+          },
+          "production_vs_prior_iou": 0.5930358735506888,
+          "production_vs_unguided_iou": 0.9791194160369258,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.22646604938271606,
+              0.125,
+              0.7928240740740741,
+              0.8698559670781894
+            ],
+            "centroid_relative": [
+              0.5030241867753411,
+              0.5092691239513863
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.22463051078341717,
+            "foreground_pixels": 1131879
+          }
+        },
+        "firing_pin_impression": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": null,
+            "centroid_relative": null,
+            "emitted": false,
+            "foreground_fraction": 0.0,
+            "foreground_pixels": 0
+          },
+          "production": {
+            "bbox_relative": [
+              0.65625,
+              0.43209876543209874,
+              0.7110339506172839,
+              0.5570987654320988
+            ],
+            "centroid_relative": [
+              0.684758740360833,
+              0.491474330081614
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.003701838197937306,
+            "foreground_pixels": 18653
+          },
+          "production_vs_prior_iou": 0.0,
+          "production_vs_unguided_iou": 0.8892844949519583,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.566358024691358,
+              0.4269547325102881,
+              0.714891975308642,
+              0.6095679012345679
+            ],
+            "centroid_relative": [
+              0.6841219279496263,
+              0.4927795021033083
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.003985633224102017,
+            "foreground_pixels": 20083
+          }
+        },
+        "firing_pin_shear": {
+          "accuracy_against_reviewed_reference": null,
+          "prior_only_control": {
+            "bbox_relative": [
+              0.38657407407407407,
+              0.4012345679012346,
+              0.625,
+              0.6666666666666666
+            ],
+            "centroid_relative": [
+              0.5040901149857082,
+              0.5331013289721453
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.049776655298988975,
+            "foreground_pixels": 250817
+          },
+          "production": {
+            "bbox_relative": [
+              0.39853395061728397,
+              0.3333333333333333,
+              0.65625,
+              0.6404320987654321
+            ],
+            "centroid_relative": [
+              0.5230904626090849,
+              0.48555682692735236
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.05646171505868008,
+            "foreground_pixels": 284502
+          },
+          "production_vs_prior_iou": 0.6017875470151196,
+          "production_vs_unguided_iou": 0.9503133777757914,
+          "unguided_classifier": {
+            "bbox_relative": [
+              0.39853395061728397,
+              0.30709876543209874,
+              0.660108024691358,
+              0.6460905349794238
+            ],
+            "centroid_relative": [
+              0.5246947007037734,
+              0.4827019495530404
+            ],
+            "emitted": true,
+            "foreground_fraction": 0.056118382614438855,
+            "foreground_pixels": 282772
+          }
+        }
+      }
+    }
+  ],
+  "original_code_base_commit": "31dcd405760ad60ed80130f3306b0e7fdc3f4e18",
+  "preservation": {
+    "checkpoint_unchanged": true,
+    "live_database_unchanged": true,
+    "train_manifest_unchanged": true
+  },
+  "runtime_dependencies": {
+    "joblib": "1.6.0",
+    "numpy": "2.5.5",
+    "pillow": "13.0.0",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1"
+  },
+  "schema": "multi-caliber-pilot-summary-v1",
+  "status": "exploratory development, not forensic validation",
+  "unchanged_train_manifest_sha256": "c563e60a47479831139ea0c0ef4b9bb88e2019e1ff6be481bd741d13e456ff07"
+}

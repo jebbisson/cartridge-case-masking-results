@@ -6,9 +6,9 @@ Use this guide after opening the local app, normally at [localhost:8787](http://
 
 > **Read the state, not just the colors.** A saved label, an unsaved estimate, and an approved training revision are different things. Approval is a workflow decision, not forensic certification. These screenshots explain the interface; they do not validate mask boundaries or demonstrate independent model accuracy. The separate [sample-output deliverable remains deferred](../README.md#sample-outputs--deferred).
 
-**Jump to:** [Find a case](#find-a-case) · [Inspect and edit](#inspect-and-edit) · [Estimate](#preview-an-estimate) · [Save and compare](#save-approve-and-compare) · [Training](#review-training-changes) · [Add scan](#add-a-scan-safely) · [Export and persistence](#export-persistence-and-reset)
+**Jump to:** [Find a case](#find-a-case) · [Inspect and edit](#inspect-and-edit) · [Run new estimate](#run-new-estimate-button) · [Save and compare](#save-approve-and-compare) · [Training](#review-training-changes) · [Add scan](#add-a-scan-safely) · [Export and persistence](#export-persistence-and-reset)
 
-Figures are real app captures with numbered outlines added. Open a figure for its full-resolution version. [Image credits and modifications](#screenshot-credits) apply to every figure.
+Figures are real app captures; most have numbered outlines added. The estimate-button close-up is an unannotated crop. Open a figure for its full-resolution version. [Image credits and modifications](#screenshot-credits) apply to every figure.
 
 ## Find a case
 
@@ -52,15 +52,23 @@ For a defensible direction, select **Arrow** (or the drag-direction target). Wit
 
 ## Preview an estimate
 
+### Run new estimate button
+
+[![The enabled Run new estimate button, shown directly beneath Revisions before it is clicked.](images/user-guide/07-run-estimate-button.png)](images/user-guide/07-run-estimate-button.png)
+
+*Figure 2 — The actual **enabled Run new estimate** button before clicking it. Find it under **Revisions** in the right Inspector; scroll inside that panel if necessary. This is a direct crop of the running app, not a recreated control. [Credits](#screenshot-credits).*
+
+Click this button to run the **already fitted model** on the open scan. It does **not** retrain. The result is an unsaved preview until you choose **Save draft** or **Approve**; the images below show that later state.
+
 [![Editing view showing an unsaved Run 1 estimate banner, brush size and undo tools, target status palette, and unsaved save controls.](images/user-guide/02-estimate.png)](images/user-guide/02-estimate.png)
 
-*Figure 2 — **1** Explicit unsaved-estimate notice; **2** drawing and view controls; **3** per-target status/origin, including retained uncertainty and a manually reviewed arrow; **4** unsaved state and save actions. This is a UI-state illustration on a training scan, not an accuracy example. [Credits](#screenshot-credits).*
+*Figure 3 — **1** Explicit unsaved-estimate notice; **2** drawing and view controls; **3** per-target status/origin, including retained uncertainty and a manually reviewed arrow; **4** unsaved state and save actions. This is a UI-state illustration on a training scan, not an accuracy example. [Credits](#screenshot-credits).*
 
 [![Run new estimate button visible under Revisions in the right Inspector, with the real unsaved estimate banner and Cancel edits, Save draft, and Approve actions.](images/user-guide/06-run-estimate.png)](images/user-guide/06-run-estimate.png)
 
-*Figure 6 — **1** The **Revisions → Run new estimate** control in the right Inspector; it is disabled here because the estimate has already produced unsaved edits. **2** The real unsaved-estimate notice. **3** Unsaved state and the separate cancel/save/approve actions. The saved revision list is unchanged. This is a UI-state illustration on the same public training scan, not an accuracy example. Figure 2 remains the editing-controls view. [Credits](#screenshot-credits).*
+*Figure 4 — **1** The **Revisions → Run new estimate** control in the right Inspector; it is disabled here because the estimate has already produced unsaved edits. **2** The real unsaved-estimate notice. **3** Unsaved state and the separate cancel/save/approve actions. The saved revision list is unchanged. This is a UI-state illustration on the same public training scan, not an accuracy example. Figure 3 remains the editing-controls view. [Credits](#screenshot-credits).*
 
-1. Locate **Revisions** below **Training eligibility** in the right **Inspector**, then find **Run new estimate** (Figure 6, callout 1). If it is below the viewport, scroll **inside the Inspector panel**, not the scan viewer.
+1. Locate **Revisions** below **Training eligibility** in the right **Inspector**, then find **Run new estimate** (Figure 2; also Figure 4, callout 1). If it is below the viewport, scroll **inside the Inspector panel**, not the scan viewer.
 2. Start from the **latest saved revision**, in editable view, with no unsaved edits. The button is disabled while edits are unsaved or a read-only comparison is open. Save or **Cancel edits** first; when comparing, return with **View latest** or **Back to unsaved edits**, then resolve any retained edits.
 3. Click **Run new estimate**. It runs the **already fitted local CPU model** against this scan and the open base revision: **this is inference, not retraining**. The result stays in the browser's edit buffer; no saved revision is created until you choose **Save draft** or **Approve**.
 4. Check the **Unsaved estimate from Run #…** notice (callout 2). Only emitted Present predictions replace those targets in the edit buffer. Targets the model does not predict are preserved—not erased or marked Absent. In particular, this mask-only model does not generate or change the arrow.
@@ -72,7 +80,7 @@ The bundled artifact is called **Run #3** in the project history but appears as 
 
 [![Read-only approved revision selected below a newer draft, with unsaved edits retained and a Back to unsaved edits button.](images/user-guide/03-revisions.png)](images/user-guide/03-revisions.png)
 
-*Figure 3 — **1** Latest draft and earlier approved revision; **2** read-only state with unsaved edits kept; **3** return to those edits; **4** badge for the revision currently viewed. Revision numbers are workspace-specific. [Credits](#screenshot-credits).*
+*Figure 5 — **1** Latest draft and earlier approved revision; **2** read-only state with unsaved edits kept; **3** return to those edits; **4** badge for the revision currently viewed. Revision numbers are workspace-specific. [Credits](#screenshot-credits).*
 
 1. Finish corrections and check all statuses. **Save draft** creates a persisted draft revision; it does not replace an existing training approval. **Approve** saves a new approved revision. Neither action retrains the model.
 2. To compare, select a row under **Revisions**. The viewer and inspector switch to that saved revision, read only. This is a revision switch in one viewer, not a side-by-side or pixel-difference tool.
@@ -85,7 +93,7 @@ The bundled artifact is called **Run #3** in the project history but appears as 
 
 [![Training changes page with pending snapshot counts and changes, fingerprint and retrain control, and one successful bundled run.](images/user-guide/04-training.png)](images/user-guide/04-training.png)
 
-*Figure 4 — **1** Eligible snapshot counts; **2** changes since the last successful snapshot; **3** fingerprint and explicit retraining action; **4** run status/model identifier. Saving the demonstration draft did not change the approved snapshot. No retraining was performed for this guide. [Credits](#screenshot-credits).*
+*Figure 6 — **1** Eligible snapshot counts; **2** changes since the last successful snapshot; **3** fingerprint and explicit retraining action; **4** run status/model identifier. Saving the demonstration draft did not change the approved snapshot. No retraining was performed for this guide. [Credits](#screenshot-credits).*
 
 1. For a Train case, save/cancel unsaved edits before changing **Include in training**. Inclusion alone is insufficient: an eligible approved revision is also required. Excluding a case affects future snapshots, not an already fitted model.
 2. Open **Training changes**, then **Refresh preview**. Inspect **Added**, **Corrected**, **Excluded**, **Unchanged**, and **Total in snapshot**. Change rows link back to their cases. Drafts, unsaved estimates, and held-out cases do not enter the snapshot.
@@ -97,7 +105,7 @@ The bundled artifact is called **Run #3** in the project history but appears as 
 
 [![Add scan dialog with original PNG and case name fields, existing/new source-group choices, lookup, and a disabled held-out group match.](images/user-guide/05-intake.png)](images/user-guide/05-intake.png)
 
-*Figure 5 — **1** Original PNG and scan name; **2** existing/new group choice; **3** lookup; **4** matched members and held-out intake block. No scan was imported for this figure. [Credits](#screenshot-credits).*
+*Figure 7 — **1** Original PNG and scan name; **2** existing/new group choice; **3** lookup; **4** matched members and held-out intake block. No scan was imported for this figure. [Credits](#screenshot-credits).*
 
 1. Confirm permission to use the scan and identify its recorded source group **before** intake. Another view of the same source belongs to the same group; a different filename is not a new group.
 2. Click **Add scan**, select an original PNG, and check **New scan name** (initially filled from the filename). This name identifies the scan, not its group.
@@ -118,8 +126,8 @@ Held-out source groups are blocked in the picker and checked by the server, incl
 
 ## Screenshot credits
 
-Figures 1–3 and 6 reproduce **BWC506US RP1_BFR.png**, PopStat Glock study (study creator Xiaoyu Zheng; measurement creator Nicole Silver), from Xiaoyu Alan Zheng (2019), *NIST Ballistics Toolmark Research Database*, National Institute of Standards and Technology, [DOI 10.18434/M32021](https://doi.org/10.18434/M32021). Figures 4–5 show workflow controls; Figure 5 includes a dimmed portion of the same scan behind the dialog. NIST's [reuse terms, warranty, and nonendorsement notices](data-licenses.md#nist-scan-images) apply; no NIST endorsement is implied.
+Figures 1, 3, 4, and 5 reproduce **BWC506US RP1_BFR.png**, PopStat Glock study (study creator Xiaoyu Zheng; measurement creator Nicole Silver), from Xiaoyu Alan Zheng (2019), *NIST Ballistics Toolmark Research Database*, National Institute of Standards and Technology, [DOI 10.18434/M32021](https://doi.org/10.18434/M32021). Figure 2 is a direct interface-only crop. Figures 6–7 show workflow controls; Figure 7 includes a dimmed portion of the same scan behind the dialog. NIST's [reuse terms, warranty, and nonendorsement notices](data-licenses.md#nist-scan-images) apply; no NIST endorsement is implied.
 
 Saved overlays and the prediction's training-derived provenance include adapted University of Dundee masks: Muthu Rama Krishnan Mookiah, Roberto Puch-Solis, Farhan Tanvir Santo, and Busayo Ajala; supervisor Niamh Nic Daeid (2024), *Segmentation masks for breech and firing-pin areas for a NIST dataset of firearm cartridge case Images*, [DOI 10.15132/10000262](https://doi.org/10.15132/10000262), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Credit also the Cartridge Case Masking Workbench contributors for local annotations and the fitted baseline, distributed under CC BY 4.0. See the [source-mask adaptation notice](../starter/README.md#dundee-mask-attribution) and [asset-specific terms](data-licenses.md).
 
-**Figure modifications:** real app screenshots were cropped where indicated by framing; title strips, outlines, and numbered callouts were added. Scan/mask pixels within the captured UI were not retouched. Figures 2 and 6 show unsaved local predictions; Figure 6 explicitly frames the Revisions control and the resulting unsaved state. Figures 1 and 3 show saved starter labels. A one-pixel draft edit was saved in a disposable workspace solely to demonstrate revision handling; it was not approved or fitted. Source masks were previously resized/mapped and sometimes edited as detailed in the adaptation notice. UI illustrations do not resolve the deferred sample-output or annotation-quality work.
+**Figure modifications:** real app screenshots were cropped where indicated by framing; title strips, outlines, and numbered callouts were added except for the direct interface crop in Figure 2. Scan/mask pixels within the captured UI were not retouched. Figures 3 and 4 show unsaved local predictions; Figure 4 explicitly frames the Revisions control and the resulting unsaved state. Figures 1 and 5 show saved starter labels. A one-pixel draft edit was saved in a disposable workspace solely to demonstrate revision handling; it was not approved or fitted. Figure 2 was captured before clicking the enabled button, without saving or changing any case. Source masks were previously resized/mapped and sometimes edited as detailed in the adaptation notice. UI illustrations do not resolve the deferred sample-output or annotation-quality work.

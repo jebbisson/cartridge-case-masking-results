@@ -33,7 +33,7 @@ The browser does not train or generate labels. Go owns the database and run reco
 flowchart TD
     Queue["Select case"] --> Latest["Open latest saved revision"]
     Latest --> Edit["Unsaved mask or manual arrow edits"]
-    Latest -->|"Run new estimate"| Preview["Unsaved mask preview<br/>Existing arrow unchanged"]
+    Latest -->|"Run new estimate"| Preview["Unsaved masks and best-effort arrow<br/>Saved revision unchanged"]
     Preview --> Edit
     Edit <-->|"compare history / return to edits"| History["Saved revision, read-only"]
     Edit -->|"Cancel edits"| Latest

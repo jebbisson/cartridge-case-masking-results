@@ -1,0 +1,2 @@
+# Discoverable root entry point; canonical CPU worker pins live in python/.
+-r python/requirements.txt

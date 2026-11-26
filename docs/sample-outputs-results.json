@@ -1,0 +1,190 @@
+{
+  "mask_checkpoint_sha256": "a4056cde70e06dc75314ca295f9dafa58e479c5b4b220176e708559a5e225a21",
+  "arrow_head_sha256": "de80f911c21361895e3c4eed40aab92ebbd2bdd4b35ece011d1dc17ec931f5dd",
+  "selection_rule": "First training entry and first validation entry from each of the first two distinct validation source groups, in existing manifest order; no selection by predicted quality.",
+  "purpose": "Illustrative predictions from the released mask checkpoint and current best-effort arrow head; not a scored benchmark or expert reference.",
+  "cases": [
+    {
+      "id": "run3-case-001",
+      "name": "FBI M585026 RP2_BFR.png",
+      "split": "train",
+      "used_for_mask_fitting": true,
+      "input": "training/dataset/images/FBI M585026 RP2_BFR.png",
+      "input_sha256": "e1d109e9afda37b94187ef6e3984ba6215f85f776d4a231791cfa053d5938013",
+      "source": {
+        "dataset": "https://doi.org/10.18434/M32021",
+        "study": "PopStat Sig Sauer",
+        "measurement_creator": "Silver, Nicole",
+        "original_filename": "FBI M585026 RP2_BFR.png"
+      },
+      "proposal": "docs/sample-outputs/01-fbi-m585026-rp2-bfr/proposal.json",
+      "proposal_sha256": "5ded0a34a22e86494fbb5f827b62a1a7b0de5bca667fcafeeea550c50fdb1929",
+      "masks": {
+        "breech_face": {
+          "status": "present",
+          "foreground_pixels": 899078,
+          "sha256": "cc3dc67e049a69559dd99df61b2604dc2beccfa02a58ebd89cc7711708981880"
+        },
+        "aperture_shear": {
+          "status": "present",
+          "foreground_pixels": 13352,
+          "sha256": "f50e9602fd42c9d0ddf5547ba7cd5ead46bb5675e3ddbf7b676e5cdb9738d5bb"
+        },
+        "firing_pin_shear": {
+          "status": "present",
+          "foreground_pixels": 443380,
+          "sha256": "32ab6554c39433f745b83ce39d13f2075e54e4f747376c45d9a7a09050f139e7"
+        },
+        "firing_pin_impression": {
+          "status": "present",
+          "foreground_pixels": 10741,
+          "sha256": "3cde974c2b36154871cc79727d7514a668006221b9c71627f74dae50f266c8d4"
+        }
+      },
+      "arrow": {
+        "status": "present",
+        "start": [
+          1291,
+          1129
+        ],
+        "end": [
+          1665,
+          1112
+        ]
+      },
+      "figure": "docs/images/sample-outputs/01-fbi-m585026-rp2-bfr.png",
+      "figure_sha256": "a4dcf43a0c5af01e93c9fcbfd326e1d1af1c71c16b9ca25e8f58f04f43b1294f",
+      "mask_model_version": "review-multiscale-cleanup-v1",
+      "arrow_prediction": {
+        "method": "predicted_pocket_prior",
+        "fallback": true,
+        "best_effort": true,
+        "quantization_repaired": false,
+        "endpoint_semantics": "ordered estimates, not verified impact points",
+        "head_version": "ordered-arrow-prior-v1",
+        "head_manifest_sha256": "c563e60a47479831139ea0c0ef4b9bb88e2019e1ff6be481bd741d13e456ff07",
+        "annotation_count": 17
+      }
+    },
+    {
+      "id": "cohort-case-043",
+      "name": "FBI FRB198 RP1_BFR.png",
+      "split": "validation",
+      "used_for_mask_fitting": false,
+      "input": "training/dataset/images/FBI FRB198 RP1_BFR.png",
+      "input_sha256": "a236c34c4fc81a927e9a2fa4b7e72a826fbce06e82d7b78108abb7a55ce71015",
+      "source": {
+        "dataset": "https://doi.org/10.18434/M32021",
+        "study": "PopStat Glock",
+        "measurement_creator": "Silver, Nicole",
+        "original_filename": "FBI FRB198 RP1_BFR.png"
+      },
+      "proposal": "docs/sample-outputs/02-fbi-frb198-rp1-bfr/proposal.json",
+      "proposal_sha256": "80f4a01a40402e5f898ac937791cc9330dac6f18e55686f0556b3a0d630b4f1e",
+      "masks": {
+        "breech_face": {
+          "status": "present",
+          "foreground_pixels": 525027,
+          "sha256": "881d3dd88ecb1ee65b09648e15eaa970131c32d4a9b88d34fa82d3d0e57767c5"
+        },
+        "aperture_shear": {
+          "status": "present",
+          "foreground_pixels": 121607,
+          "sha256": "8f405713aa025ce8364413dbd6e0e52c569893f70dbb4151ae423e9ef066089a"
+        },
+        "firing_pin_shear": {
+          "status": "present",
+          "foreground_pixels": 277991,
+          "sha256": "996e29b08ba97ad2d6a46a7a08b47376bfcef3984b1477e53c85bc1633bb2c13"
+        },
+        "firing_pin_impression": {
+          "status": "indeterminate"
+        }
+      },
+      "arrow": {
+        "status": "present",
+        "start": [
+          1362,
+          957
+        ],
+        "end": [
+          1735,
+          940
+        ]
+      },
+      "figure": "docs/images/sample-outputs/02-fbi-frb198-rp1-bfr.png",
+      "figure_sha256": "f7ca4cd71744e3f77deb7257b81612192cce54d41edf0e6d3d48e081a60fb720",
+      "mask_model_version": "review-multiscale-cleanup-v1",
+      "arrow_prediction": {
+        "method": "predicted_pocket_prior",
+        "fallback": true,
+        "best_effort": true,
+        "quantization_repaired": false,
+        "endpoint_semantics": "ordered estimates, not verified impact points",
+        "head_version": "ordered-arrow-prior-v1",
+        "head_manifest_sha256": "c563e60a47479831139ea0c0ef4b9bb88e2019e1ff6be481bd741d13e456ff07",
+        "annotation_count": 17
+      }
+    },
+    {
+      "id": "cohort-case-045",
+      "name": "FBI U122440 RP1_BFR.png",
+      "split": "validation",
+      "used_for_mask_fitting": false,
+      "input": "training/dataset/images/FBI U122440 RP1_BFR.png",
+      "input_sha256": "e8398aaf2a8c9fbc4896f671fa0e870b662f74241297cb690707f3899e619b32",
+      "source": {
+        "dataset": "https://doi.org/10.18434/M32021",
+        "study": "PopStat Sig Sauer",
+        "measurement_creator": "Silver, Nicole",
+        "original_filename": "FBI U122440 RP1_BFR.png"
+      },
+      "proposal": "docs/sample-outputs/03-fbi-u122440-rp1-bfr/proposal.json",
+      "proposal_sha256": "cae410a8973f733af0070db40a856f2b06ad29d43160ebc628ef0fde1c1f9052",
+      "masks": {
+        "breech_face": {
+          "status": "present",
+          "foreground_pixels": 913061,
+          "sha256": "353d992af07c7e4791e4a7ea99402ad5de60611d91e8075c88c8d9bad72063f7"
+        },
+        "aperture_shear": {
+          "status": "indeterminate"
+        },
+        "firing_pin_shear": {
+          "status": "present",
+          "foreground_pixels": 404863,
+          "sha256": "8afd85b8c168faeae1aba55ae594dcab7a7e8d4b24543669d754dde593d3e92c"
+        },
+        "firing_pin_impression": {
+          "status": "present",
+          "foreground_pixels": 4141,
+          "sha256": "36818dd48cb9fca0acb8cd9210c4b370a834ce6c8ba99a7591cbc9b93a4cb526"
+        }
+      },
+      "arrow": {
+        "status": "present",
+        "start": [
+          1352,
+          1068
+        ],
+        "end": [
+          1696,
+          1058
+        ]
+      },
+      "figure": "docs/images/sample-outputs/03-fbi-u122440-rp1-bfr.png",
+      "figure_sha256": "75f49aabf02ad3d720834d63212b03e5a94cf59e5307e606706788ad277fc576",
+      "mask_model_version": "review-multiscale-cleanup-v1",
+      "arrow_prediction": {
+        "method": "predicted_support_geometry",
+        "fallback": false,
+        "best_effort": true,
+        "quantization_repaired": false,
+        "endpoint_semantics": "ordered estimates, not verified impact points",
+        "head_version": "ordered-arrow-prior-v1",
+        "head_manifest_sha256": "c563e60a47479831139ea0c0ef4b9bb88e2019e1ff6be481bd741d13e456ff07",
+        "annotation_count": 17
+      }
+    }
+  ]
+}

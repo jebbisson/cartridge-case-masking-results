@@ -8,7 +8,7 @@ The React UI receives the case queue, originals, saved masks, revisions, and tra
 
 ## Review a case
 
-1. Open a case. **Original** hides the overlays without altering the source PNG. **Run new estimate** previews masks from the active model as unsaved edits. It does not generate a drag arrow or modify one already on the case.
+1. Open a case. **Original** hides the overlays without altering the source PNG. **Run new estimate** previews masks and a best-effort directed arrow as unsaved edits. The proposed arrow replaces any arrow in the edit buffer, but saved annotations stay unchanged until **Save draft** or **Approve**. Use **Cancel edits** to restore the saved revision.
 2. Select a mask layer and use **Brush** or **Eraser**. Brush diameter is measured in native pixels; zoom in with a size-1 brush for a one-pixel correction. To edit a defensible drag direction manually, choose **Arrow**, drag tail to tip, and correct with the endpoint handles or **Reverse arrow**. Leave a direction indeterminate when the scan does not support it.
 3. In **Revisions**, select a saved revision to compare, then choose **Back to unsaved edits** to return. Historical revisions are read-only. **Cancel edits** discards only the unsaved work. **Save draft** persists a new draft; **Approve** saves a new approved revision. Saving a draft or running an estimate does not replace the approved revision used for training.
 4. Use **Training changes** to inspect the next snapshot. **Confirm & retrain** submits the exact fingerprint shown in the preview. Only eligible, included training cases contribute approved labels; unsaved edits and unapproved drafts are not training inputs.

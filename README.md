@@ -10,7 +10,7 @@ A local browser workbench for reviewing pixel masks on fired cartridge-case micr
 
 Docker packages the application and its dependencies so the same tool can run on a local machine or be deployed to a network location and accessed through a browser. The goal is to make it easy to deploy wherever it is needed, without requiring users to configure a development environment.
 
-**Release status:** Research/development release with 48 real scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
+**Release status:** Research/development release with 48 real **9×19 mm (9 mm Luger)** reflectance-microscopy scans and the fitted baseline. Scan images follow NIST's published data reuse terms; annotations and the checkpoint have separate attribution and licensing in [Data, annotation, and model terms](docs/data-licenses.md). Annotation quality remains under review. This is a review aid, not a validated forensic tool or a published benchmark.
 
 **New to the app? [Read the illustrated user guide](docs/user-guide.md)** for a tour of the interface, mask and arrow editing, saving versus approval, training changes, safe scan intake, and workspace backups.
 

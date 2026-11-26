@@ -4,7 +4,7 @@
 
 | Target host | Requirements |
 | --- | --- |
-| Windows x86-64 | [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/) with WSL 2, hardware virtualization, and **Linux containers** selected. Follow Docker's current Windows and WSL requirements. |
+| Windows x86-64 | [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), hardware virtualization, and **Linux containers** selected. Recommended: WSL 2; follow the [README's check/install/update steps](../README.md#windows-prerequisites-recommended-wsl-2-setup). An already-working Docker-supported Linux-container backend, such as Hyper-V, does not need to be changed. |
 | Linux x86-64 | [Docker Engine](https://docs.docker.com/engine/install/) and the [Compose plugin](https://docs.docker.com/compose/install/linux/). |
 
 Use Docker Compose 2.17 or later with a local builder that supports named build contexts. The app uses one Linux x86-64 container, a pinned Python 3.14 runtime, and CPU inference. No GPU runtime, CUDA, API keys, host Python, Go, or Node are needed to run it. The first build needs access to base images and package downloads. The intended platforms are not a compatibility claim until the build has passed on both.
@@ -26,7 +26,7 @@ docker compose ps
 docker compose logs --tail=100
 ```
 
-Check that Docker is running and that port 8787 is not already occupied if the app does not open. On Windows, verify Docker Desktop is using the WSL 2 backend and Linux containers.
+Check that Docker is running and that port 8787 is not already occupied if the app does not open. On Windows, confirm **Linux containers** are selected. If using the recommended WSL backend, check WSL's version and Docker Desktop's WSL 2 setting using the [Windows prerequisites](../README.md#windows-prerequisites-recommended-wsl-2-setup); do not switch an already-working alternative backend merely to match the recommended route.
 
 ## Workspace and backups
 

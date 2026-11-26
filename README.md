@@ -36,9 +36,35 @@ Docker packages the application and its dependencies so the same tool can run on
 
 ## Start with Docker
 
-The intended hosts are **Windows x86-64** with [Docker Desktop in Linux-container mode using WSL 2](https://docs.docker.com/desktop/features/wsl/) and **Linux x86-64** with [Docker Engine](https://docs.docker.com/engine/install/) and the Compose plugin. No GPU or host Python is required; the container uses a pinned Python 3.14 runtime.
+The intended hosts are **Windows x86-64** with [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) running **Linux containers** (recommended: the WSL 2 backend; see the prerequisites below), and **Linux x86-64** with [Docker Engine](https://docs.docker.com/engine/install/) and the Compose plugin. No GPU or host Python is required; the container uses a pinned Python 3.14 runtime.
 
 The root [`requirements.txt`](requirements.txt) is the discoverable Python dependency entry point; it includes the canonical pinned [`python/requirements.txt`](python/requirements.txt). Docker installs that canonical file inside the container, so Docker users do not need to install Python dependencies on the host. See the [Python estimator setup](python/README.md#go-to-worker-interface) for optional local worker use.
+
+### Windows prerequisites (recommended WSL 2 setup)
+
+**WSL 2 (Windows Subsystem for Linux 2) is required for Docker Desktop's recommended WSL backend, not for the masking code itself.** Docker Desktop can also run Linux containers using another supported backend, such as Hyper-V. If the app already runs that way, you do not need to change backends or reset your data.
+
+1. Check the [Docker Desktop Windows system requirements](https://docs.docker.com/desktop/setup/install/windows-install/#system-requirements), including a supported Windows version and hardware virtualization enabled in BIOS/UEFI.
+2. In **PowerShell**, check the installed WSL package and distributions:
+
+   ```powershell
+   wsl --version
+   wsl --list --verbose
+   ```
+
+   For the WSL backend, Docker currently requires **WSL package version 2.1.5 or later**, with the latest recommended. The distribution list's **VERSION** column separately shows WSL **1** or **2**; when Docker Desktop uses WSL 2, its `docker-desktop` distribution should show **2**. No Ubuntu or other personal Linux distribution is needed.
+3. If WSL is missing, open **PowerShell as Administrator**, install it without an extra Linux distribution, then **restart Windows**:
+
+   ```powershell
+   wsl --install --no-distribution
+   ```
+
+   To update an existing WSL installation, run `wsl --update` and restart if prompted. If these commands are unavailable or setup reports a virtualization problem, follow [Microsoft's WSL installation guide](https://learn.microsoft.com/en-us/windows/wsl/install) and [command reference](https://learn.microsoft.com/en-us/windows/wsl/basic-commands).
+4. Install/start [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), select the **WSL 2 backend**, and use **Linux containers**, not Windows containers. In versions that show the option, enable **Settings → General → Use WSL 2 based engine**; some installations select it automatically and do not show that checkbox. Docker provides its own Linux environment—you do not install Python, Go, Node, or the app inside Ubuntu.
+
+See [Docker's official WSL 2 guide](https://docs.docker.com/desktop/features/wsl/) for the full setup. Once Docker Desktop is running, use the same launch command below from PowerShell in the repository directory; there is no separate Windows image.
+
+### Launch the workbench
 
 With the verified starter bundle at `starter/full-bundle/`, run this from the repository root using a local Docker builder:
 
